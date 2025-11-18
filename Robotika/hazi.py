@@ -1,5 +1,5 @@
 # Robotika hazi
-# Nagy Richard 25223020
+# Nagy Richard 25223020 Mechatronika
 import math
 
 x = -3
