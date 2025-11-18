@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 # univerzumok
 quality = ctrl.Antecedent(np.arange(0, 10, 0.1), 'quality')
 service = ctrl.Antecedent(np.arange(0, 10, 0.1), 'service')
-tip = ctrl.Consequent(np.arange(0, 25, 0.1), 'tip')
+tip = ctrl.Consequent(np.arange(0, 32, 0.1), 'tip')
 
 # tagsagi fuggvenyek
 quality['borzaszto'] = fuzz.trimf(quality.universe, [-5, 0, 5])
@@ -19,8 +19,8 @@ service['elfogadthato'] = fuzz.trimf(service.universe, [0, 5, 10])
 service['kituno'] = fuzz.trimf(service.universe, [5, 10, 15])
 
 tip['alacsony'] = fuzz.trimf(tip.universe, [0, 0, 13])
-tip['kozepes'] = fuzz.trimf(tip.universe, [0, 13, 25])
-tip['magas'] = fuzz.trimf(tip.universe, [13, 25, 25])
+tip['kozepes'] = fuzz.trimf(tip.universe, [0, 13, 30])
+tip['magas'] = fuzz.trimf(tip.universe, [13, 25, 30])
 
 # tagsagi fuggvenyek le rajzolasa
 quality.view()
@@ -39,8 +39,8 @@ rule3 = ctrl.Rule(service['kituno'] | quality['finom'], tip['magas'])
 tipping_ctrl = ctrl.ControlSystem([rule1, rule2, rule3])
 tipping = ctrl.ControlSystemSimulation(tipping_ctrl)
 
-tipping.input['quality'] = 6.5
-tipping.input['service'] = 9.8
+tipping.input['quality'] = 10
+tipping.input['service'] = 10
 tipping.compute()
 print('Borravalo ' + str(tipping.output['tip']))
 
