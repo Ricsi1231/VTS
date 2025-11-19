@@ -1,0 +1,222 @@
+MPASM  5.50                          MAIN.ASM   11-19-2025  12:02:17         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[205]: Found directive in column 1. (PROCESSOR)
+                      00001 PROCESSOR 16f84
+                      00002 #include "p16f84.inc"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F84 processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00206         LIST
+Warning[205]: Found directive in column 1. (__CONFIG)
+2007   3FF1           00003 __CONFIG _XT_OSC & _WDT_OFF & _PWRTE_ON & _CP_OFF
+                      00004 
+Warning[205]: Found directive in column 1. (cblock)
+                      00005 cblock 0x0C
+  0000000C            00006         DelayL
+  0000000D            00007         DelayM
+  0000000E            00008         DelayH
+  0000000F            00009         Pointer
+  00000010            00010         DataTable
+Warning[205]: Found directive in column 1. (ENDC)
+                      00011 endc
+                      00012 
+Warning[205]: Found directive in column 1. (org)
+0000                  00013 org 0h
+0000   1683           00014         bsf STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0001   0185           00015         clrf TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   0186           00016         clrf TRISB
+0003   1283           00017         bcf STATUS,RP0
+                      00018 
+0004                  00019 Loop1
+0004   018F           00020         clrf Pointer
+0005                  00021 Loop2
+0005   080F           00022          movf Pointer,W
+0006   2010           00023          call DataTable
+0007   0086           00024          movwf PORTB
+0008   200F           00025          call Delay600
+Message[305]: Using default destination of 1 (file).
+0009   0A8F           00026          incf Pointer
+000A   300A           00027          movlw d'10'
+000B   020F           00028          subwf Pointer,W
+000C   1D03           00029          btfss STATUS,Z
+000D   2805           00030          goto Loop2
+000E   2804           00031          goto Loop1
+                      00032 
+000F                  00033 Delay600 
+000F   018C           00034          clrf DelayL
+0010   018D           00035          clrf DelayM
+0011   3003           00036          movlw 3h
+MPASM  5.50                          MAIN.ASM   11-19-2025  12:02:17         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0012   008E           00037          movwf DelayH
+Warning[207]: Found label after column 1. (Wait1)
+0013                  00038         Wait1
+Message[305]: Using default destination of 1 (file).
+0013   0B8C           00039          decfsz DelayL
+0014   2813           00040          goto Wait1
+Message[305]: Using default destination of 1 (file).
+0015   0B8D           00041          decfsz DelayM
+0016   2813           00042          goto Wait1
+Message[305]: Using default destination of 1 (file).
+0017   0B8E           00043          decfsz DelayH
+0018   2813           00044          goto Wait1
+0019   0008           00045          return
+                      00046          end
+MPASM  5.50                          MAIN.ASM   11-19-2025  12:02:17         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C                                 00000000
+DC                                00000001
+DataTable                         00000010
+Delay600                          0000000F
+DelayH                            0000000E
+DelayL                            0000000C
+DelayM                            0000000D
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+Loop1                             00000004
+Loop2                             00000005
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+Pointer                           0000000F
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+MPASM  5.50                          MAIN.ASM   11-19-2025  12:02:17         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Wait1                             00000013
+Z                                 00000002
+_CONFIG                           00002007
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84                           00000001
+MPASM  5.50                          MAIN.ASM   11-19-2025  12:02:17         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+__DEBUG                           1
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXX------ ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    26
+Program Memory Words Free:   998
+
+
+Errors   :     0
+Warnings :     6 reported,     0 suppressed
+Messages :     6 reported,     0 suppressed
+
+
