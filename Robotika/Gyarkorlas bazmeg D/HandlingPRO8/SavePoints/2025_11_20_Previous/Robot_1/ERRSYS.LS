@@ -1,0 +1,17 @@
+ERRSYS.LS      Robot Name ROBOT 20-NOV-25 19:14:42  
+
+1" 20-NOV-25 19:04:54 " SYST-039 Operation mode T2 Selected               " " SERVO                         00110110" 
+2" 20-NOV-25 19:04:54 " SYST-042 DEADMAN defeated                         " " SERVO                         00110110" 
+3" 20-NOV-25 19:04:54 " SYST-045 TP enabled in AUTO mode                  " " STOP.G                        00100110" 
+4" 20-NOV-25 19:04:54 " SYST-042 DEADMAN defeated                         " " SERVO                         00110110" 
+5" 20-NOV-25 19:04:54 " SYST-045 TP enabled in AUTO mode                  " " STOP.G                        00100110" 
+6" 20-NOV-25 19:04:54 " SYST-042 DEADMAN defeated                         " " SERVO                         00110110" 
+7" 20-NOV-25 19:04:54 " SYST-045 TP enabled in AUTO mode                  " " STOP.G                        00100110" 
+8" 20-NOV-25 18:46:54 " SYST-040 Operation mode AUTO Selected             " " SERVO                         00110110" 
+9" 20-NOV-25 18:46:54 " TPIF-157 Menu cannot be displayed                 " " WARN                          00000000" 
+10" 20-NOV-25 18:46:42 " SYST-305 System startup in progress               " " SERVO                         00110110" 
+11" 20-NOV-25 18:46:40 " SYST-042 DEADMAN defeated                         " " SERVO                         00110110" 
+12" 20-NOV-25 18:46:40 " SYST-305 System startup in progress               " " STOP.G                        00100110" 
+13" 20-NOV-25 18:46:36 " SYST-026 System normal power up                   " " WARN                          00000000" 
+14" 20-NOV-25 18:46:00 " OPTN-018 No CUSTO additions on this media         " " WARN                          00000000" 
+15" 20-NOV-25 18:46:00 " OPTN-018 No Language additions on this media      " " WARN                          00000000" 
