@@ -1,0 +1,8 @@
+Recovering from C:\Users\Ricsi\Documents\My Workcells\19_11\RobotInit\Robot_1
+----- Copying Personality Files -----
+Copied frvirt.dat
+Copied orderfil.dat
+Copied BACKDATE.DT
+Copied RC65.DT
+----- Copying Auto-Update Files -----
+Created dummy C:\Users\Ricsi\Documents\My Workcells\19_11\Robot_1\MC\00\TEMP\FNOREST.COM
