@@ -21,17 +21,17 @@ class FuzzyMotorController:
 
         self.control = ctrl.Consequent(np.arange(CONTROL_RANGE_MIN, CONTROL_RANGE_MAX, 1), 'control')
 
-        self.error['N'] = fuzz.trapmf(self.error.universe, [-180, -180, -40, -8])
-        self.error['Z'] = fuzz.trimf(self.error.universe, [-10, 0, 10])
-        self.error['P'] = fuzz.trapmf(self.error.universe, [8, 40, 180, 180])
+        self.error['N'] = fuzz.trapmf(self.error.universe, [-180, -180, -30, -5])
+        self.error['Z'] = fuzz.trimf(self.error.universe, [-8, 0, 8])
+        self.error['P'] = fuzz.trapmf(self.error.universe, [5, 30, 180, 180])
 
-        self.delta_error['N'] = fuzz.trapmf(self.delta_error.universe, [-50, -50, -5, -1.5])
-        self.delta_error['Z'] = fuzz.trimf(self.delta_error.universe, [-3, 0, 3])
-        self.delta_error['P'] = fuzz.trapmf(self.delta_error.universe, [1.5, 5, 50, 50])
+        self.delta_error['N'] = fuzz.trapmf(self.delta_error.universe, [-50, -50, -6, -1])
+        self.delta_error['Z'] = fuzz.trimf(self.delta_error.universe, [-2, 0, 2])
+        self.delta_error['P'] = fuzz.trapmf(self.delta_error.universe, [1, 6, 50, 50])
 
-        self.control['N'] = fuzz.trapmf(self.control.universe, [-100, -100, -20, -8])
-        self.control['Z'] = fuzz.trimf(self.control.universe, [-10, 0, 10])
-        self.control['P'] = fuzz.trapmf(self.control.universe, [8, 20, 100, 100])
+        self.control['N'] = fuzz.trapmf(self.control.universe, [-100, -100, -35, -10])
+        self.control['Z'] = fuzz.trimf(self.control.universe, [-15, 0, 15])
+        self.control['P'] = fuzz.trapmf(self.control.universe, [10, 35, 100, 100])
 
         rule1 = ctrl.Rule(self.error['N'] & self.delta_error['N'], self.control['N'])
         rule2 = ctrl.Rule(self.error['N'] & self.delta_error['Z'], self.control['N'])
