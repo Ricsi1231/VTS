@@ -7,7 +7,6 @@ echo "=========================================="
 echo "DC Motor Position Control - Setup"
 echo "=========================================="
 
-# Create virtual environment
 echo "Creating virtual environment..."
 python3 -m venv venv
 
@@ -16,7 +15,6 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Activate virtual environment
 echo "Activating virtual environment..."
 source venv/bin/activate
 

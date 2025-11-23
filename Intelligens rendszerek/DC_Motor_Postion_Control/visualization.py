@@ -124,7 +124,6 @@ def plot_final_summary(current_pos, target_pos, final_pos, steps):
 
     for i, (bar, pos) in enumerate(zip(bars, positions)):
         height = bar.get_height()
-        # Position text above bar for positive values, below for negative
         va = 'bottom' if pos >= 0 else 'top'
         y_pos = height if pos >= 0 else height
         ax.text(bar.get_x() + bar.get_width()/2., y_pos,
@@ -134,7 +133,6 @@ def plot_final_summary(current_pos, target_pos, final_pos, steps):
     ax.set_title(f'Motor Position Control Summary\n(Converged in {steps} steps)', fontsize=14)
     ax.grid(True, axis='y', alpha=0.3)
 
-    # Handle both positive and negative values properly
     min_pos = min(positions)
     max_pos = max(positions)
     margin = (max_pos - min_pos) * 0.2 if max_pos != min_pos else 10
