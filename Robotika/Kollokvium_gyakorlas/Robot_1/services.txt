@@ -1,0 +1,13 @@
+RPCMAIN                   : 3002
+Telnet                    : 23
+Teach Pendant             : 9100
+FTP                       : 21
+CGTP Web Server           : 3080
+TP_INPUT Server           : 60004
+Robot Discovery Method    : 60008
+Web Server                : 80
+Console/SMON              : 9101
+ROBOGUIDE (pid)           : 19964
+Virtual Robot (pid)       : 16096
+Robot Server (pid)        : 19236
+Robot Server HostName     : 127.0.0.1:3002
