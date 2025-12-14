@@ -1,0 +1,270 @@
+#define BUTTON_1 3
+#define BUTTON_2 2
+
+#define GREEN_LED 12
+#define RED_LED 11
+
+#define SEGMENT_A 4
+#define SEGMENT_B 5
+#define SEGMENT_C 6
+#define SEGMENT_D 7
+#define SEGMENT_E 8
+#define SEGMENT_F 9
+#define SEGMENT_G 10
+
+int cathode = 0;
+int anode = 1;
+
+void setup()
+{
+  for(int i = 4; i<11; i++)
+  {
+   	pinMode(i, OUTPUT);
+    
+   	digitalWrite(i, HIGH); // ha anodós a kijelző
+    //digitalWrite(i, LOW); // ha katódos a kijelző
+  }
+
+  pinMode(GREEN_LED, OUTPUT);
+  pinMode(RED_LED, OUTPUT);
+  
+  pinMode(BUTTON_1, INPUT);
+  pinMode(BUTTON_2, INPUT);
+
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  if(digitalRead(BUTTON_1))
+  {
+	digitalWrite(RED_LED, HIGH);
+    digitalWrite(GREEN_LED, LOW);
+    Display(0, anode);
+
+    delay(100);
+  }
+  if(digitalRead(BUTTON_2))
+  {
+	digitalWrite(GREEN_LED, HIGH);
+    digitalWrite(RED_LED, LOW);
+    Display(8, anode);
+
+    delay(100);
+  }
+}
+
+void Display(int number, int type)
+{
+  if(type == 0) 
+  {
+  	switch(number)
+    {
+      case 0:
+              digitalWrite(SEGMENT_A, HIGH);
+              digitalWrite(SEGMENT_B, HIGH);
+              digitalWrite(SEGMENT_C, HIGH);
+              digitalWrite(SEGMENT_D, HIGH);
+              digitalWrite(SEGMENT_E, HIGH);
+              digitalWrite(SEGMENT_F, HIGH);
+              digitalWrite(SEGMENT_G, LOW);
+      break;
+
+      case 1:
+              digitalWrite(SEGMENT_A, LOW);
+              digitalWrite(SEGMENT_B, HIGH);
+              digitalWrite(SEGMENT_C, HIGH);
+              digitalWrite(SEGMENT_D, LOW);
+              digitalWrite(SEGMENT_E, LOW);
+              digitalWrite(SEGMENT_F, LOW);
+              digitalWrite(SEGMENT_G, LOW);
+      break;
+
+      case 2:
+              digitalWrite(SEGMENT_A, HIGH);
+              digitalWrite(SEGMENT_B, HIGH);
+              digitalWrite(SEGMENT_C, LOW);
+              digitalWrite(SEGMENT_D, HIGH);
+              digitalWrite(SEGMENT_E, HIGH);
+              digitalWrite(SEGMENT_F, LOW);
+              digitalWrite(SEGMENT_G, HIGH);
+      break;
+
+      case 3:
+              digitalWrite(SEGMENT_A, HIGH);
+              digitalWrite(SEGMENT_B, HIGH);
+              digitalWrite(SEGMENT_C, HIGH);
+              digitalWrite(SEGMENT_D, HIGH);
+              digitalWrite(SEGMENT_E, LOW);
+              digitalWrite(SEGMENT_F, LOW);
+              digitalWrite(SEGMENT_G, HIGH);
+      break;
+
+      case 4:
+              digitalWrite(SEGMENT_A, LOW);
+              digitalWrite(SEGMENT_B, HIGH);
+              digitalWrite(SEGMENT_C, HIGH);
+              digitalWrite(SEGMENT_D, LOW);
+              digitalWrite(SEGMENT_E, LOW);
+              digitalWrite(SEGMENT_F, HIGH);
+              digitalWrite(SEGMENT_G, HIGH);
+      break;
+
+      case 5:
+              digitalWrite(SEGMENT_A, HIGH);
+              digitalWrite(SEGMENT_B, LOW);
+              digitalWrite(SEGMENT_C, HIGH);
+              digitalWrite(SEGMENT_D, HIGH);
+              digitalWrite(SEGMENT_E, LOW);
+              digitalWrite(SEGMENT_F, HIGH);
+              digitalWrite(SEGMENT_G, HIGH);
+      break;
+
+      case 6:
+              digitalWrite(SEGMENT_A, HIGH);
+              digitalWrite(SEGMENT_B, LOW);
+              digitalWrite(SEGMENT_C, HIGH);
+              digitalWrite(SEGMENT_D, HIGH);
+              digitalWrite(SEGMENT_E, HIGH);
+              digitalWrite(SEGMENT_F, HIGH);
+              digitalWrite(SEGMENT_G, HIGH);
+      break;
+
+      case 7:
+              digitalWrite(SEGMENT_A, HIGH);
+              digitalWrite(SEGMENT_B, HIGH);
+              digitalWrite(SEGMENT_C, HIGH);
+              digitalWrite(SEGMENT_D, LOW);
+              digitalWrite(SEGMENT_E, LOW);
+              digitalWrite(SEGMENT_F, LOW);
+              digitalWrite(SEGMENT_G, LOW);
+      break;
+
+      case 8:
+              digitalWrite(SEGMENT_A, HIGH);
+              digitalWrite(SEGMENT_B, HIGH);
+              digitalWrite(SEGMENT_C, HIGH);
+              digitalWrite(SEGMENT_D, HIGH);
+              digitalWrite(SEGMENT_E, HIGH);
+              digitalWrite(SEGMENT_F, HIGH);
+              digitalWrite(SEGMENT_G, HIGH);
+      break;
+
+      case 9:
+              digitalWrite(SEGMENT_A, HIGH);
+              digitalWrite(SEGMENT_B, HIGH);
+              digitalWrite(SEGMENT_C, HIGH);
+              digitalWrite(SEGMENT_D, HIGH);
+              digitalWrite(SEGMENT_E, LOW);
+              digitalWrite(SEGMENT_F, HIGH);
+              digitalWrite(SEGMENT_G, HIGH);
+      break;
+    }
+  }
+  else 
+  {
+    switch(number)
+    {
+      case 0:
+                digitalWrite(SEGMENT_A, LOW);
+                digitalWrite(SEGMENT_B, LOW);
+                digitalWrite(SEGMENT_C, LOW);
+                digitalWrite(SEGMENT_D, LOW);
+                digitalWrite(SEGMENT_E, LOW);
+                digitalWrite(SEGMENT_F, LOW);
+                digitalWrite(SEGMENT_G, HIGH);
+        break;
+
+        case 1:
+                digitalWrite(SEGMENT_A, HIGH);
+                digitalWrite(SEGMENT_B, LOW);
+                digitalWrite(SEGMENT_C, LOW);
+                digitalWrite(SEGMENT_D, HIGH);
+                digitalWrite(SEGMENT_E, HIGH);
+                digitalWrite(SEGMENT_F, HIGH);
+                digitalWrite(SEGMENT_G, HIGH);
+        break;
+
+        case 2:
+                digitalWrite(SEGMENT_A, LOW);
+                digitalWrite(SEGMENT_B, LOW);
+                digitalWrite(SEGMENT_C, HIGH);
+                digitalWrite(SEGMENT_D, LOW);
+                digitalWrite(SEGMENT_E, LOW);
+                digitalWrite(SEGMENT_F, HIGH);
+                digitalWrite(SEGMENT_G, LOW);
+        break;
+
+        case 3:
+                digitalWrite(SEGMENT_A, LOW);
+                digitalWrite(SEGMENT_B, LOW);
+                digitalWrite(SEGMENT_C, LOW);
+                digitalWrite(SEGMENT_D, LOW);
+                digitalWrite(SEGMENT_E, HIGH);
+                digitalWrite(SEGMENT_F, HIGH);
+                digitalWrite(SEGMENT_G, LOW);
+        break;
+
+        case 4:
+                digitalWrite(SEGMENT_A, HIGH);
+                digitalWrite(SEGMENT_B, LOW);
+                digitalWrite(SEGMENT_C, LOW);
+                digitalWrite(SEGMENT_D, HIGH);
+                digitalWrite(SEGMENT_E, HIGH);
+                digitalWrite(SEGMENT_F, LOW);
+                digitalWrite(SEGMENT_G, LOW);
+        break;
+
+        case 5:
+                digitalWrite(SEGMENT_A, LOW);
+                digitalWrite(SEGMENT_B, HIGH);
+                digitalWrite(SEGMENT_C, LOW);
+                digitalWrite(SEGMENT_D, LOW);
+                digitalWrite(SEGMENT_E, HIGH);
+                digitalWrite(SEGMENT_F, LOW);
+                digitalWrite(SEGMENT_G, LOW);
+        break;
+
+        case 6:
+                digitalWrite(SEGMENT_A, LOW);
+                digitalWrite(SEGMENT_B, HIGH);
+                digitalWrite(SEGMENT_C, LOW);
+                digitalWrite(SEGMENT_D, LOW);
+                digitalWrite(SEGMENT_E, LOW);
+                digitalWrite(SEGMENT_F, LOW);
+                digitalWrite(SEGMENT_G, LOW);
+        break;
+
+        case 7:
+                digitalWrite(SEGMENT_A, LOW);
+                digitalWrite(SEGMENT_B, LOW);
+                digitalWrite(SEGMENT_C, LOW);
+                digitalWrite(SEGMENT_D, HIGH);
+                digitalWrite(SEGMENT_E, HIGH);
+                digitalWrite(SEGMENT_F, HIGH);
+                digitalWrite(SEGMENT_G, HIGH);
+        break;
+
+        case 8:
+                digitalWrite(SEGMENT_A, LOW);
+                digitalWrite(SEGMENT_B, LOW);
+                digitalWrite(SEGMENT_C, LOW);
+                digitalWrite(SEGMENT_D, LOW);
+                digitalWrite(SEGMENT_E, LOW);
+                digitalWrite(SEGMENT_F, LOW);
+                digitalWrite(SEGMENT_G, LOW);
+        break;
+
+        case 9:
+                digitalWrite(SEGMENT_A, LOW);
+                digitalWrite(SEGMENT_B, LOW);
+                digitalWrite(SEGMENT_C, LOW);
+                digitalWrite(SEGMENT_D, LOW);
+                digitalWrite(SEGMENT_E, HIGH);
+                digitalWrite(SEGMENT_F, LOW);
+                digitalWrite(SEGMENT_G, LOW);
+        break;
+    }
+  }
+}
+

@@ -1,0 +1,120 @@
+﻿
+///196g könnyebb
+#define BUTTON_1 2
+
+//204g könnyebb
+#define BUTTON_2 4
+
+//204g nehezebb
+#define BUTTON_3 8
+
+#define IN1 3
+#define IN2 5
+#define IN3 6
+#define IN4 9
+
+void setup()
+{
+  pinMode(BUTTON_1, INPUT);
+  pinMode(BUTTON_2, INPUT);
+  pinMode(BUTTON_3, INPUT);
+
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  if(digitalRead(BUTTON_1))
+  {
+    
+      step(true, 100);
+  }
+
+  else if(digitalRead(BUTTON_2))
+  {
+    
+      step(false, 100);
+    
+  }
+}
+
+void step(bool forward, int period)
+{
+  if(forward)
+  {
+    for(int i = 0; i<period; i++)
+    {
+     digitalWrite(IN1, HIGH);
+     digitalWrite(IN2, LOW);
+     digitalWrite(IN3, LOW);
+     digitalWrite(IN4, LOW);
+
+     delay(10);
+
+     digitalWrite(IN1, LOW);
+     digitalWrite(IN2, HIGH);
+     digitalWrite(IN3, LOW);
+     digitalWrite(IN4, LOW);
+
+     delay(10);
+
+     digitalWrite(IN1, LOW);
+     digitalWrite(IN2, LOW);
+     digitalWrite(IN3, HIGH);
+     digitalWrite(IN4, LOW);
+
+     delay(10);
+
+     digitalWrite(IN1, LOW);
+     digitalWrite(IN2, LOW);
+     digitalWrite(IN3, LOW);
+     digitalWrite(IN4, HIGH);
+
+     delay(10);
+    }
+  }
+
+    else
+    {
+      for(int i = 0; i<period; i++)
+      {
+       digitalWrite(IN1, LOW);
+       digitalWrite(IN2, LOW);
+       digitalWrite(IN3, LOW);
+       digitalWrite(IN4, HIGH);
+
+       delay(10);
+
+       digitalWrite(IN1, LOW);
+       digitalWrite(IN2, LOW);
+       digitalWrite(IN3, HIGH);
+       digitalWrite(IN4, LOW);
+
+       delay(10);
+
+       digitalWrite(IN1, LOW);
+       digitalWrite(IN2, HIGH);
+       digitalWrite(IN3, LOW);
+       digitalWrite(IN4, LOW);
+
+       delay(10);
+
+       digitalWrite(IN1, HIGH);
+       digitalWrite(IN2, LOW);
+       digitalWrite(IN3, LOW);
+       digitalWrite(IN4, LOW);
+
+       delay(10);
+      }
+    }
+}

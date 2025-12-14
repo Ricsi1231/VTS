@@ -1,0 +1,45 @@
+#include "DHT.h"
+#include <LiquidCrystal.h>
+
+#define DHTPIN (4)
+#define DHTTYPE (DHT11)
+
+#define RED_LED (2)
+#define GREEN_LED (3)
+
+LiquidCrystal lcd(5, 6, 7, 8, 9, 10);
+
+DHT dht(DHTPIN, DHTTYPE);
+
+float temperature = 0;
+float humidity = 0;
+
+void setup()
+{
+  dht.begin();
+
+  lcd.begin(16, 2);
+  lcd.clear();
+
+  pinMode(RED_LED, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  temperature = dht.readTemperature();
+  humidity = dht.readHumidity();
+
+  lcd.setCursor(0, 0);
+  lcd.print("Temp: ");
+  lcd.print(temperature);
+
+  lcd.setCursor(0, 1);
+  lcd.print("Hud: ");
+  lcd.print(humidity);
+
+  digitalWrite(RED_LED, HIGH);
+  digitalWrite(GREEN_LED, HIGH);
+}

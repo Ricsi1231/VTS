@@ -1,0 +1,39 @@
+#include <LiquidCrystal.h>
+#include <Servo.h>
+
+Servo servo;
+
+LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
+
+#define SENSOR A0
+#define SERVO_PIN 9
+
+int ADC_value = 0;
+
+void setup()
+{
+ lcd.begin(16,2);
+ lcd.clear();
+
+ servo.attach(SERVO_PIN);
+
+ Serial.begin(9600);
+}
+
+void loop()
+{
+  ADC_value = analogRead(SENSOR);
+
+  lcd.setCursor(0, 0);
+  lcd.print("Sensor: ");
+  lcd.print(ADC_value);
+
+  servo.write(0);
+  delay(1000);
+  servo.write(180);
+  delay(1000);
+
+  lcd.clear();
+}
+
+

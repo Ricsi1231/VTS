@@ -1,0 +1,42 @@
+#define TRIGGER_PIN (3)
+#define ECHO_PIN (4)
+
+#define RED_LED (5)
+#define YELLOW_LED1 (6)
+#define YELLOW_LED2 (7)
+#define GREEN_LED (8)
+
+unsigned long duration = 0;
+unsigned long distance = 0;
+
+void setup()
+{
+  pinMode(TRIGGER_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+
+  pinMode(RED_LED, OUTPUT);
+  pinMode(YELLOW_LED1, OUTPUT);
+  pinMode(YELLOW_LED2, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  digitalWrite(RED_LED, HIGH);
+  digitalWrite(YELLOW_LED1, HIGH);
+  digitalWrite(YELLOW_LED2, HIGH);
+  digitalWrite(GREEN_LED, HIGH);
+
+  digitalWrite(TRIGGER_PIN, LOW);
+  delay(2);
+  digitalWrite(TRIGGER_PIN, HIGH);
+  delay(2);
+  digitalWrite(TRIGGER_PIN, LOW);
+
+  duration = pulseIn(ECHO_PIN, HIGH);
+  distance = (duration * 0.034) / 2;
+
+  Serial.println(distance);
+}

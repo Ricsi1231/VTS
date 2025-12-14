@@ -1,0 +1,44 @@
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd (3, 4, 5, 6, 7, 8);
+
+#define SENSOR1 (9)
+#define SENSOR2 (10)
+
+#define RED_LED1 (11)
+#define RED_LED2 (13)
+#define GREEN_LED (12)
+
+int Sensor1State = 0;
+int Sensor2State = 0;
+
+void setup()
+{
+  lcd.begin(16, 2);
+  lcd.clear();
+
+  pinMode(SENSOR1, INPUT);
+  pinMode(SENSOR2, INPUT);
+
+  pinMode(RED_LED1, OUTPUT);
+  pinMode(RED_LED2, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  Sensor1State = digitalRead(SENSOR1);
+  Sensor2State = digitalRead(SENSOR2);
+
+  digitalWrite(RED_LED1, HIGH);
+  digitalWrite(RED_LED2, HIGH);
+  digitalWrite(GREEN_LED, HIGH);
+
+  Serial.println("1 Sensor State:");
+  Serial.println(Sensor1State);
+
+  Serial.println("2 Sensor State:");
+  Serial.println(Sensor2State);
+}
