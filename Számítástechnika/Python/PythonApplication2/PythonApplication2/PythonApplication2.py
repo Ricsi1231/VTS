@@ -1,0 +1,1 @@
+letters = ["a", "e", "o", "i", "u"]inputLetter = ""f = []counter = 0print("letters")while inputLetter != "x":    inputLetter = input()        for i in range(len(letters)):        if letters[i] == inputLetter:            counter += 1            f.append(inputLetter)print(counter)

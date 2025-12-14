@@ -1,0 +1,10 @@
+Output: Mixed Sim
+Type  : AdvSimNetlist
+From  : Project [LDO simulation.PrjPcb]
+   Generated File[LDO simulation.nsx]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 16:26:54 On 06/10/2024
