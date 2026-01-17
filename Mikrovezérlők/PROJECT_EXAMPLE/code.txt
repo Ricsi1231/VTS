@@ -1,0 +1,97 @@
+#include <Adafruit_LiquidCrystal.h>
+
+const int LCD_ADDRESS = 0;
+const int LCD_ROWS = 2;
+const int LCD_COLUMNS = 16;
+const int LCD_DISTANCE_VALUE_PRINT_POSITION_ROW = 1;
+const int LCD_DISTANCE_VALUE_PRINT_POSITION_COLUMN = 0;
+
+const int SENSOR_ECHO_PIN = 4;
+const int SENSOR_TRIGGER_PIN = 3;
+const int SENSOR_IMPULSE_MS = 2;
+const float SOUND_SPEED = 0.034;
+const int DISTANCE_OFFSET = 2;
+
+const int GOOD_DISTANCE_INDICATOR = 6;
+const int LOST_DISTANCE_INDICATOR = 5;
+
+const int UPDATE_INTERVAL_MS = 10;
+const int GOOD_DISTANCE_CM = 150;
+
+const int SERIAL_COMMUNICATION_BAUD_RATE = 115200;
+
+long distance = 0;
+long previousDistance = 0;
+
+void lcdPrintDistance();
+long getDistance();
+
+Adafruit_LiquidCrystal Lcd(LCD_ADDRESS);
+
+void setup()
+{
+  pinMode(SENSOR_TRIGGER_PIN, OUTPUT);
+  pinMode(SENSOR_ECHO_PIN, INPUT);
+  
+  pinMode(GOOD_DISTANCE_INDICATOR, OUTPUT);
+  pinMode(LOST_DISTANCE_INDICATOR, OUTPUT);
+    
+  digitalWrite(GOOD_DISTANCE_INDICATOR, LOW);
+  digitalWrite(LOST_DISTANCE_INDICATOR, LOW);
+  digitalWrite(SENSOR_TRIGGER_PIN, LOW);
+  
+  Lcd.begin(LCD_COLUMNS, LCD_ROWS);
+  Serial.begin(SERIAL_COMMUNICATION_BAUD_RATE);
+}
+
+void loop()
+{
+  lcdPrintDistance();
+  
+  distance = getDistance();
+  if (distance <= GOOD_DISTANCE_CM) 
+  {
+    digitalWrite(GOOD_DISTANCE_INDICATOR, HIGH);
+    digitalWrite(LOST_DISTANCE_INDICATOR, LOW);
+  } 
+  else
+  {
+    digitalWrite(GOOD_DISTANCE_INDICATOR, LOW);
+    digitalWrite(LOST_DISTANCE_INDICATOR, HIGH);
+  }
+  
+  delay(UPDATE_INTERVAL_MS);
+}
+
+void lcdPrintDistance() 
+{
+  long currentDistance = getDistance();
+  if (currentDistance != previousDistance) 
+  {
+    Lcd.clear();
+    Lcd.print("Distance:");
+    Lcd.setCursor(LCD_DISTANCE_VALUE_PRINT_POSITION_COLUMN, 
+                  LCD_DISTANCE_VALUE_PRINT_POSITION_ROW);
+    Lcd.print(currentDistance);
+  }
+  
+  previousDistance = currentDistance;
+}
+
+long getDistance() 
+{
+  long duration = 0;
+  long currentDistance = 0;
+  
+  digitalWrite(SENSOR_TRIGGER_PIN, LOW);
+  delay(SENSOR_IMPULSE_MS);
+  digitalWrite(SENSOR_TRIGGER_PIN, HIGH);
+  delay(SENSOR_IMPULSE_MS);
+  digitalWrite(SENSOR_TRIGGER_PIN, LOW);
+  
+  duration = pulseIn(SENSOR_ECHO_PIN, HIGH);
+  currentDistance = (duration * SOUND_SPEED) / DISTANCE_OFFSET;
+  Serial.println(currentDistance);
+  
+  return currentDistance;
+}
