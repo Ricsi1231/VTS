@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 
 
 def approxsq(i, pars):
-    return ((i + pars[0]) * pars[1]) ** 2 + pars[2]
-
+    return pars[1] + pars[2] * numpy.sin(2 * numpy.pi * pars[1] * i + pars[0])
 
 def geneticsq(pars, data):
     ret = 0
@@ -82,8 +81,10 @@ def crossover(parents, offspring_size):
 def mutation(offspring_crossover, mut_range, gen):
     # Mutation changes a single gene in each offspring randomly.
     for idx in range(offspring_crossover.shape[0]):
-        # The random value to be added to the gene.
-        random_value = numpy.random.uniform(-1 * (mut_range / 2) * (1 / gen), (mut_range / 2) * (1 / gen), 1)
+        # The random value to be added to the gene
+        min = -1 * (mut_range / 2) * (1 / gen)
+        max = (mut_range / 2) * (1 / gen)
+        random_value = numpy.random.uniform(min, max)
         random_pos = random.randint(0, offspring_crossover.shape[1] - 1)
         offspring_crossover[idx, random_pos] = offspring_crossover[idx, random_pos] + random_value
     return offspring_crossover

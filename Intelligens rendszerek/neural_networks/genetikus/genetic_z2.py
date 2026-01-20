@@ -3,7 +3,7 @@ import utils
 import matplotlib.pyplot as plt
 from numpy import genfromtxt
 
-data = genfromtxt("values.csv", delimiter=',')
+data = genfromtxt("data2.csv", delimiter=',')
 
 num_weights = 3
 
@@ -18,10 +18,10 @@ high = 10
 new_population = numpy.random.uniform(low=low, high=high, size=pop_size)
 
 
-mut = 100  
+mut = 1000  
 
 
-num_generations = 100
+num_generations = 300
 
 plt.ion() 
 for generation in range(num_generations):
