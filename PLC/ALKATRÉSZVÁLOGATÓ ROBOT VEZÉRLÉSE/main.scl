@@ -1,0 +1,153 @@
+PROGRAM Main
+
+CASE currentState OF
+    START:
+        ResetDevice(
+        robotMovement        := ROBOT_MOVE_START,
+        robotOpenGripperCmd  := GRIPPER_OPEN,
+        robotCloseGripperCmd := GRIPPER_CLOSE,
+        transferRequest      := TRANSFER_REQUEST,
+        markPart             := MARKING_REQUEST,
+        conveyorCmd          := CONVEYOR_START,
+        pneumaticTableRotate := TURNTABLE_ROTATE_REQUEST
+    );
+    
+    RobotPosition := NONE;
+    RobotHighLevelControl(Position := RobotPosition);
+    robotMovmentIsFinished := RobotHighLevelControl.Done;
+    robotPickedUpPart := FALSE;
+
+    circleTablePositionCounter := 0;
+    componentCounter := 0;
+
+    IF START_SIGNAL = TRUE AND robotMovmentIsFinished = TRUE THEN
+        robotMovmentIsFinished := FALSE;
+        currentState := COMPONENT_PICKUP;
+    END_IF;
+
+    COMPONENT_PICKUP:
+        RobotHighLevelControl(Position := PickupPositions[componentCounter]);
+        robotMovmentIsFinished := RobotHighLevelControl.Done;
+
+        IF robotMovmentIsFinished = TRUE AND robotPickedUpPart = FALSE THEN
+            Pulse(CommandRequest := TRUE, CommandPulse => GRIPPER_CLOSES);
+            robotPickedUpPart := TRUE;
+        END_IF;
+
+        gripperClosedRisingEdge(CLK := GRIPPER_CLOSED,
+                  Q => gripperClosedPulse);
+
+        IF gripperClosedPulse = TRUE THEN
+            gripperClosedPulse := FALSE;
+            currentState := MOVE_TO_PNEUMATIC_TABLE;
+        END_IF;
+
+    MOVE_TO_PNEUMATIC_TABLE:
+        RobotHighLevelControl(Position := PNEUMATIC_TABLE);
+        robotMovmentIsFinished := RobotHighLevelControl.Done;
+
+        IF robotMovmentIsFinished = TRUE THEN
+            robotMovmentIsFinished := FALSE;
+            currentState := PLACE_PART_TO_PNEUMATIC_TABLE;
+        END_IF;
+
+    PLACE_PART_TO_PNEUMATIC_TABLE:
+        IF robotPickedUpPart = TRUE THEN
+            Pulse(CommandRequest := TRUE, CommandPulse => GRIPPER_OPEN);
+        END_IF;
+
+        gripperCloseFallingEdge(CLK := GRIPPER_CLOSED,
+                  Q => gripperClosedPulse);
+
+        IF gripperClosedPulse = TRUE THEN
+            robotPickedUpPart := FALSE;
+            currentState := ROTATE_PART_TO_CHECK_FOR_MARK;
+        END_IF;
+
+    ROTATE_PART_TO_CHECK_FOR_MARK:
+        IF circleTablePositionCounter < circleTablePostion.MARKER THEN
+            TURNTABLE_ROTATE_REQUEST := TRUE;
+
+            IF TURNTABLE_ROTATION_DONE THEN
+                TURNTABLE_ROTATE_REQUEST := FALSE;
+                circleTablePositionCounter := circleTablePositionCounter + 1;
+            END_IF;
+        ELSE
+            currentState := CHECK_FOR_MARK;
+        END_IF;
+
+    CHECK_FOR_MARK:
+        IF MARK_REQUEST = TRUE THEN
+            currentState := MARK_PART;
+        ELSE
+            currentState := ROTATE_PART_TO_MANIPULATOR;
+        END_IF;
+
+    MARK_PART:
+        MARK_REQUEST := TRUE;
+
+        IF MARK_DONE = TRUE THEN
+            MARK_REQUEST := FALSE;
+            currentState := ROTATE_PART_TO_MANIPULATOR;
+        END_IF;
+
+    ROTATE_PART_TO_MANIPULATOR:
+        IF circleTablePositionCounter < circleTablePostion.TRANSFER_MANIPULATOR THEN
+            TURNTABLE_ROTATE_REQUEST := TRUE;
+
+            IF TURNTABLE_ROTATION_DONE THEN
+                TURNTABLE_ROTATE_REQUEST := FALSE;
+                circleTablePositionCounter := circleTablePositionCounter + 1;
+            END_IF;
+        ELSE
+            currentState := TRANSFER_MANIPULATOR;
+        END_IF;
+
+    TRANSFER_MANIPULATOR:
+        TRANSFER_REQUEST := TRUE;
+
+        IF TRANSFER_MANIPULATOR_DONE = TRUE THEN
+            TRANSFER_REQUEST := FALSE;
+             currentState := CONVYER_START;
+        END_IF;
+
+    CONVYER_START:
+        Pulse(CommandRequest := TRUE, CommandPulse => CONVEYOR_MOVMENT);
+
+        IF CONVEYOR_RUNNING = TRUE THEN
+            currentState := CONVEYER_STOP;
+        END_IF;
+
+    CONVYER_STOP:
+        IF CONVEYOR_PART_SENSOR = TRUE THEN
+            Pulse(CommandRequest := TRUE, CommandPulse => CONVEYOR_MOVMENT);
+            currentState := CHECK_FOR_PART_COUNT;
+        END_IF;
+
+    CHECK_FOR_PART_COUNT:
+        IF componentCounter < maxComponentNumber THEN
+            componentCounter := componentCounter + 1;
+            currentState := COMPONENT_PICKUP;
+        ELSE
+            currentState := CHANGE_ROBOT_TOOLPLACE;
+        END_IF;
+
+    CHANGE_ROBOT_TOOL_PLACE:
+        RobotHighLevelControl(Position := COLLABORATIVE_GRIPPER);
+        robotMovmentIsFinished := RobotHighLevelControl.Done;
+
+        IF robotMovmentIsFinished = TRUE:
+            robotMovmentIsFinished := FALSE;
+            currentState := CHANGE_ROBOT_TOOL;
+        END_IF;
+
+    CHANGE_ROBOT_TOOL:
+        GRIPPER_CHANGE_REQUEST := TRUE;
+
+        IF GRIPPER_CHANGE_DONE = TRUE THEN
+            GRIPPER_CHANGE_REQUEST := FALSE;
+            currentState := PLACE_PARTS_TO_BOXES;
+        END_IF;
+END_CASE;
+
+END_PROGRAM

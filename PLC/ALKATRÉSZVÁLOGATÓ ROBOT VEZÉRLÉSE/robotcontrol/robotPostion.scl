@@ -1,0 +1,84 @@
+TYPE ROBOT_POSITION :
+(
+    NONE := 0,
+
+    PART_POSITION_1 := 1,
+    PART_POSITION_2 := 2,
+    PART_POSITION_3 := 3,
+    PART_POSITION_4 := 4,
+    PART_POSITION_5 := 5,
+    PART_POSITION_6 := 6,
+
+    HOME_POSITION := 7,
+    PNEUMATIC_TABLE := 8,
+    PICK_FROM_CONVEYOR := 9,
+
+    GOOD_PART_BOX := 10,
+    BAD_PART_BOX := 11,
+
+    NORMAL_GRIPPER := 12,
+    COLLABORATIVE_GRIPPER := 13
+);
+END_TYPE
+
+VAR_GLOBAL CONSTANT
+
+RobotPositionMap : ARRAY[ROBOT_POSITION] OF BYTE :=
+[
+    2#0000,
+
+    2#0001,
+    2#0010,
+    2#0011,
+    2#0100,
+    2#0101,
+    2#0110,
+
+    2#1000,
+    2#1001,
+    2#1010,
+
+    2#1100,
+    2#1101,
+
+    2#1110,
+    2#1111
+];
+
+PickupPositions : ARRAY[0..4] OF ROBOT_POSITION :=
+[
+    PART_POSITION_1,
+    PART_POSITION_2,
+    PART_POSITION_3,
+    PART_POSITION_4,
+    PART_POSITION_5
+];
+
+END_VAR
+
+FUNCTION SetRobotPositionBits
+
+VAR_INPUT
+    Position : ROBOT_POSITION;
+END_VAR
+
+VAR_OUTPUT
+    Bit3 : BOOL;
+    Bit2 : BOOL;
+    Bit1 : BOOL;
+    Bit0 : BOOL;
+END_VAR
+
+VAR
+    Value : BYTE;
+END_VAR
+
+
+Value := RobotPositionMap[Position];
+
+Bit3 := (Value AND 2#1000) <> 0;
+Bit2 := (Value AND 2#0100) <> 0;
+Bit1 := (Value AND 2#0010) <> 0;
+Bit0 := (Value AND 2#0001) <> 0;
+
+END_FUNCTION

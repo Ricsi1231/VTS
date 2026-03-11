@@ -1,0 +1,21 @@
+FUNCTION ResetDevice
+
+VAR_IN_OUT
+    robotMovement : BOOL;
+    robotOpenGripperCmd : BOOL;
+    robotCloseGripperCmd : BOOL;
+    transferRequest : BOOL;
+    markPart : BOOL;
+    conveyorCmd : BOOL;
+    pneumaticTableRotate : BOOL;
+END_VAR
+
+robotMovement := FALSE;
+robotOpenGripperCmd := FALSE;
+robotCloseGripperCmd := FALSE;
+transferRequest := FALSE;
+markPart := FALSE;
+conveyorCmd := FALSE;
+pneumaticTableRotate := FALSE;
+
+END_FUNCTION

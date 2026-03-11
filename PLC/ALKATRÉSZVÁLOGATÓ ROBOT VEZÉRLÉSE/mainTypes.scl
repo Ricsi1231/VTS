@@ -1,0 +1,31 @@
+VAR
+    currentState : StateMachine := START;
+    pneumaticTablePostion : PNEUMATIC_TABLE_POSTIONS := BASE_POSTION;
+    RobotPosition : ROBOT_POSITION := BASE_POSTION;
+
+    componentCounter : INT := 0;
+    maxComponentNumber : INT := 5;
+
+    circleTablePositionCounter : INT;
+    circleTablePostion : CIRCLE_TABLE_POSITION;
+
+    robotMovmentIsFinished : BOOL;
+    robotPickedUpPart : BOOL;
+
+    gripperClosedRisingEdge : R_TRIG;
+    gripperCloseFallingEdge : F_TRIG;
+    gripperClosedPulse : BOOL;
+END_VAR
+
+VAR_GLOBAL
+
+TYPE CIRCLE_TABLE_POSITION :
+(
+    ROBOT_LOAD := 0,
+    BUFFER_1 := 1,
+    MARKER := 2,
+    BUFFER_2 := 3,
+    TRANSFER_MANIPULATOR := 4,
+    BUFFER_3 := 5
+);
+END_TYPE

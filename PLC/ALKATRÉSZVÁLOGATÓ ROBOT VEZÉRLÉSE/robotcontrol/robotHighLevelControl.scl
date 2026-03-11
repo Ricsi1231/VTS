@@ -1,0 +1,70 @@
+TYPE RobotHighLevelState :
+(
+    IDLE,
+    SET_POSITION,
+    MOVING,
+    DONE
+);
+END_TYPE
+
+FUNCTION_BLOCK RobotHighLevelControl
+
+VAR_INPUT
+    Position : ROBOT_POSITION;
+
+    RobotMoving : BOOL;        
+    RobotMovementDone : BOOL;   
+END_VAR
+
+VAR_OUTPUT
+    Done : BOOL;
+
+    RobotMovementIo : BOOL;
+    RobotMovementIoBit0 : BOOL;
+    RobotMovementIoBit1 : BOOL;
+    RobotMovementIoBit2 : BOOL;
+    RobotMovementIoBit3 : BOOL;
+END_VAR
+
+VAR
+    state : RobotHighLevelState;
+    waitTimer : TON;
+END_VAR
+
+CASE state OF
+
+    IDLE:
+        RobotMovementIo := FALSE;
+        Done := FALSE;
+        IF NOT RobotMoving THEN
+            state := SET_POSITION;
+        END_IF;
+
+    SET_POSITION:
+        SetRobotPositionBits
+        (
+            Position := Position,
+            Bit3 => RobotMovementIoBit3,
+            Bit2 => RobotMovementIoBit2,
+            Bit1 => RobotMovementIoBit1,
+            Bit0 => RobotMovementIoBit0
+        );
+        waitTimer(IN := TRUE, PT := T#100ms);
+        IF waitTimer.Q THEN
+            waitTimer(IN := FALSE, PT := T#100ms);
+            state := MOVING;
+        END_IF;
+
+    MOVING:
+        RobotMovementIo := TRUE;
+        IF RobotMovementDone THEN
+            state := DONE;
+        END_IF;
+
+    DONE:
+        RobotMovementIo := FALSE;
+        Done := TRUE;
+
+END_CASE;
+
+END_FUNCTION_BLOCK

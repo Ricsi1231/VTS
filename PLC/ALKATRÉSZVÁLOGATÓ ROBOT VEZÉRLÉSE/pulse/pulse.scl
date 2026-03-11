@@ -1,0 +1,22 @@
+FUNCTION_BLOCK Pulse
+
+VAR_INPUT
+   CommandRequest : BOOL;
+END_VAR
+
+VAR_OUTPUT
+   CommandPulse : BOOL;
+END_VAR
+
+VAR
+   PulseTimer : TP;
+END_VAR
+
+PulseTimer(
+   IN := CommandRequest,
+   PT := T#100ms
+);
+
+CommandPulse := PulseTimer.Q;
+
+END_FUNCTION_BLOCK
