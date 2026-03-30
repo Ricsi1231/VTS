@@ -1,0 +1,736 @@
+claude
+                                                                                                                                                                                            
+╭─── Claude Code v2.1.19 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting started                                                                                                            │
+│                Welcome back Pierre!                │ Run /init to create a CLAUDE.md file with instructions for Claude                                                                   │
+│                                                    │ ─────────────────────────────────────────────────────────────────                                                                   │
+│                                                    │ Recent activity                                                                                                                     │
+│                       ▐▛███▜▌                      │ No recent activity                                                                                                                  │
+│                      ▝▜█████▛▘                     │                                                                                                                                     │
+│                        ▘▘ ▝▝                       │                                                                                                                                     │
+│ Opus 4.5 · Claude Max · chatgpt@smartpierre.com's  │                                                                                                                                     │
+│ Organization                                       │                                                                                                                                     │
+│ ~/Documents/Projects/CartPole-Fuzzy-Control-System │                                                                                                                                     │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+                                                                                                                                                                                            
+❯ irj nekem ide chatbe egy doskit, ami tartalmazza:                                                                                                                                         
+  - bevezeto                                                                                                                                                                                
+  - fuzzy rendszerek mukodeset                                                                                                                                                              
+  - cartpole szimulacio mukodiese                                                                                                                                                           
+  - univerzumok, szabalybazis, integralo tag hatassa a rendszere                                                                                                                            
+  - a kimeneti eredmenyek (szimulaj bele valami erteket)                                                                                                                                    
+  - tartalom jegyzek                                                                                                                                                                        
+                                                                                                                                                                                            
+  legyen meg legalabb 10 oldal szoveg                                                                                                                                                       
+                                                                                                                                                                                            
+● Először átnézem a projektet, hogy megértsem a rendszer működését és pontos adatokat tudjak írni a dokumentációba.                                                                         
+                                                                                                                                                                                            
+● Search(pattern: "**/*.py")                                                                                                                                                                
+  ⎿  Found 100 files (ctrl+o to expand)                                                                                                                                                     
+                                                                                                                                                                                            
+● Read(main.py)                                                                                                                                                                             
+  ⎿  Read 216 lines                                                                                                                                                                         
+                                                                                                                                                                                            
+● Read(README.md)                                                                                                                                                                           
+  ⎿  Read 283 lines                                                                                                                                                                         
+  ⎿  Interrupted · What should Claude do instead?                                                                                                                                           
+                                                                                                                                                                                            
+❯ irj nekem ide chatbe egy doskit, ami tartalmazza:                                                                                                                                         
+  - bevezeto                                                                                                                                                                                
+  - fuzzy rendszerek mukodeset                                                                                                                                                              
+  - cartpole szimulacio mukodiese                                                                                                                                                           
+  - univerzumok, szabalybazis, integralo tag hatassa a rendszere                                                                                                                            
+  - a kimeneti eredmenyek (szimulaj bele valami erteket)                                                                                                                                    
+  - tartalom jegyzek                                                                                                                                                                        
+                                                                                                                                                                                            
+  legyen meg legalabb 10 oldal szoveg, ne nezd at ezt a kod bazist                                                                                                                          
+                                                                                                                                                                                            
+● CartPole Fuzzy Irányítási Rendszer                                                                                                                                                        
+                                                                                                                                                                                            
+  Dokumentáció                                                                                                                                                                              
+                                                                                                                                                                                            
+  ---                                                                                                                                                                                       
+  Tartalomjegyzék                                                                                                                                                                           
+                                                                                                                                                                                            
+  1. #1-bevezetés                                                                                                                                                                           
+    - 1.1 A projekt célja                                                                                                                                                                   
+    - 1.2 Motiváció                                                                                                                                                                         
+    - 1.3 A dokumentum felépítése                                                                                                                                                           
+  2. #2-fuzzy-rendszerek-elméleti-háttere                                                                                                                                                   
+    - 2.1 A fuzzy logika alapjai                                                                                                                                                            
+    - 2.2 Fuzzy halmazok és tagsági függvények                                                                                                                                              
+    - 2.3 Fuzzy következtetési rendszerek                                                                                                                                                   
+    - 2.4 Mamdani-típusú fuzzy rendszerek                                                                                                                                                   
+    - 2.5 Defuzzifikáció                                                                                                                                                                    
+  3. #3-a-cartpole-szimuláció-működése                                                                                                                                                      
+    - 3.1 A CartPole probléma leírása                                                                                                                                                       
+    - 3.2 Fizikai modell és egyenletek                                                                                                                                                      
+    - 3.3 Állapottér és megfigyelések                                                                                                                                                       
+    - 3.4 A szimuláció futtatása                                                                                                                                                            
+  4. #4-az-irányítási-rendszer-felépítése                                                                                                                                                   
+    - 4.1 Bemeneti univerzumok                                                                                                                                                              
+    - 4.2 Kimeneti univerzum                                                                                                                                                                
+    - 4.3 Tagsági függvények                                                                                                                                                                
+    - 4.4 Szabálybázis                                                                                                                                                                      
+    - 4.5 Az integráló tag hatása                                                                                                                                                           
+  5. #5-kimeneti-eredmények                                                                                                                                                                 
+    - 5.1 Szimulációs paraméterek                                                                                                                                                           
+    - 5.2 Mérési eredmények                                                                                                                                                                 
+    - 5.3 Teljesítményértékelés                                                                                                                                                             
+    - 5.4 Grafikus eredmények                                                                                                                                                               
+  6. #6-összefoglalás                                                                                                                                                                       
+  7. #7-irodalomjegyzék                                                                                                                                                                     
+                                                                                                                                                                                            
+  ---                                                                                                                                                                                       
+  1. Bevezetés                                                                                                                                                                              
+                                                                                                                                                                                            
+  1.1 A projekt célja                                                                                                                                                                       
+                                                                                                                                                                                            
+  A jelen dokumentáció egy fuzzy logikán alapuló irányítási rendszer bemutatását tartalmazza, amelyet a klasszikus CartPole (kocsi-rúd) egyensúlyozási probléma megoldására fejlesztettünk  
+  ki. A projekt elsődleges célja egy olyan intelligens vezérlő megvalósítása volt, amely képes a rúd függőleges pozícióban tartására, miközben a kocsi pozícióját is a pálya közepén        
+  stabilizálja.                                                                                                                                                                             
+                                                                                                                                                                                            
+  A CartPole probléma az irányításelmélet és a mesterséges intelligencia egyik legismertebb tesztfeladata, amely kiválóan alkalmas különböző vezérlési stratégiák összehasonlítására és     
+  értékelésére. A hagyományos megközelítések mellett, mint például a PID szabályozók vagy az állapot-visszacsatolásos vezérlők, a fuzzy logika egy alternatív, emberi gondolkodáshoz        
+  közelebb álló megoldást kínál.                                                                                                                                                            
+                                                                                                                                                                                            
+  A projektben megvalósított Mamdani-típusú fuzzy következtetési rendszer 24 szabályt tartalmaz, amelyek négy bemeneti változó alapján határozzák meg a kocsira ható erőt. Az irányítási    
+  rendszer folytonos erőkifejtést alkalmaz a diszkrét bal-jobb akciók helyett, ami finomabb és hatékonyabb szabályozást tesz lehetővé.                                                      
+                                                                                                                                                                                            
+  1.2 Motiváció                                                                                                                                                                             
+                                                                                                                                                                                            
+  A fuzzy logika alkalmazása az irányítástechnikában számos előnnyel jár a hagyományos módszerekhez képest. Az emberi szakértői tudás közvetlenül beépíthető a rendszerbe nyelvi szabályok  
+  formájában, ami különösen hasznos olyan esetekben, amikor a szabályozott folyamat matematikai modellje nem ismert pontosan, vagy túlságosan bonyolult.                                    
+                                                                                                                                                                                            
+  A CartPole rendszer ugyan viszonylag egyszerű fizikai modellel rendelkezik, mégis kiválóan demonstrálja a fuzzy irányítás előnyeit. A nemlineáris dinamika, az instabil egyensúlyi pont és
+   a többváltozós természet olyan kihívásokat jelent, amelyek kezelésére a fuzzy logika természetes módon alkalmas.                                                                         
+                                                                                                                                                                                            
+  További motivációt jelentett az oktatási szempont is. A projekt során a hallgatók megismerkedhetnek a fuzzy rendszerek tervezésének és implementálásának gyakorlati aspektusaival,        
+  miközben egy látványos és interaktív alkalmazást hoznak létre.                                                                                                                            
+                                                                                                                                                                                            
+  1.3 A dokumentum felépítése                                                                                                                                                               
+                                                                                                                                                                                            
+  A dokumentáció a következő fő részekből áll. A második fejezet a fuzzy rendszerek elméleti hátterét mutatja be, kitérve a fuzzy halmazok, tagsági függvények és következtetési            
+  mechanizmusok alapjaira. A harmadik fejezet a CartPole szimuláció működését ismerteti, beleértve a fizikai modellt és az állapottér leírását.                                             
+                                                                                                                                                                                            
+  A negyedik fejezet az irányítási rendszer konkrét felépítését tárgyalja, részletezve az univerzumokat, a szabálybázist és az integráló tag szerepét. Az ötödik fejezet a szimulációs      
+  eredményeket mutatja be számszerű adatokkal és grafikonokkal. Végül a hatodik fejezet összefoglalja a projekt eredményeit és a levonható következtetéseket.                               
+                                                                                                                                                                                            
+  ---                                                                                                                                                                                       
+  2. Fuzzy Rendszerek Elméleti Háttere                                                                                                                                                      
+                                                                                                                                                                                            
+  2.1 A fuzzy logika alapjai                                                                                                                                                                
+                                                                                                                                                                                            
+  A fuzzy logikát Lotfi A. Zadeh professzor vezette be 1965-ben megjelent alapvető cikkében "Fuzzy Sets" címmel. A klasszikus halmazelmélettel és kétértékű logikával szemben, ahol egy elem
+   vagy tartozik egy halmazhoz, vagy nem, a fuzzy logika lehetővé teszi a részleges halmaztagság kifejezését.                                                                               
+                                                                                                                                                                                            
+  A hagyományos bináris logikában egy állítás csak igaz (1) vagy hamis (0) lehet. A fuzzy logikában viszont az igazságértékek a [0, 1] intervallum bármely értékét felvehetik, ami lehetővé 
+  teszi a "részben igaz" vagy "nagyjából hamis" típusú kijelentések kezelését. Ez a megközelítés sokkal közelebb áll az emberi gondolkodáshoz és nyelvi kifejezésmódhoz.                    
+                                                                                                                                                                                            
+  Például a "magas hőmérséklet" fogalma nem egy éles határértéknél kezdődik. Ami az egyik ember számára magas, az a másiknak még elfogadható lehet. A fuzzy logika ezt a bizonytalanságot és
+   szubjektivitást képes kezelni azáltal, hogy egy hőmérsékletérték különböző mértékben tartozhat a "magas", "közepes" és "alacsony" kategóriákhoz egyidejűleg.                             
+                                                                                                                                                                                            
+  A fuzzy rendszerek három fő komponensből állnak: fuzzifikáció, következtetés és defuzzifikáció. A fuzzifikáció során a crisp (éles, pontos) bemeneti értékeket fuzzy halmazokká alakítjuk.
+   A következtetés a szabálybázis alapján határozza meg a kimeneti fuzzy halmazokat. Végül a defuzzifikáció visszaalakítja a fuzzy kimenetet crisp értékké.                                 
+                                                                                                                                                                                            
+  2.2 Fuzzy halmazok és tagsági függvények                                                                                                                                                  
+                                                                                                                                                                                            
+  Egy fuzzy halmaz A az X univerzumon a következőképpen definiálható:                                                                                                                       
+                                                                                                                                                                                            
+  A = {(x, μA(x)) | x ∈ X}                                                                                                                                                                  
+                                                                                                                                                                                            
+  ahol μA(x) az x elem A halmazhoz való tartozásának mértékét jelöli, és értéke a [0, 1] intervallumba esik. A μA függvényt tagsági függvénynek (membership function) nevezzük.             
+                                                                                                                                                                                            
+  A tagsági függvények számos különböző alakot ölthetnek a konkrét alkalmazástól függően. A leggyakrabban használt típusok a következők:                                                    
+                                                                                                                                                                                            
+  Háromszög alakú (triangular): Három paraméterrel definiált, egyszerű és számításilag hatékony. A csúcspontban éri el az 1 értéket, és lineárisan csökken mindkét irányban. Matematikai    
+  alakja:                                                                                                                                                                                   
+                                                                                                                                                                                            
+  μ(x) = max(0, min((x-a)/(b-a), (c-x)/(c-b)))                                                                                                                                              
+                                                                                                                                                                                            
+  ahol a és c a háromszög alappontjai, b pedig a csúcspont.                                                                                                                                 
+                                                                                                                                                                                            
+  Trapéz alakú (trapezoidal): Négy paraméterrel definiált, a háromszög általánosítása. Egy konstans 1 értékű szakaszt tartalmaz a csúcsok között. Különösen hasznos, amikor egy tartományt  
+  szeretnénk teljes tagsággal jelölni.                                                                                                                                                      
+                                                                                                                                                                                            
+  Gauss-görbe: Folytonosan differenciálható, sima átmeneteket biztosít. Két paraméterrel (középpont és szórás) definiálható:                                                                
+                                                                                                                                                                                            
+  μ(x) = exp(-(x-c)²/(2σ²))                                                                                                                                                                 
+                                                                                                                                                                                            
+  Harang alakú (generalized bell): Három paraméterrel rendelkezik, rugalmasabb a Gauss-görbénél.                                                                                            
+                                                                                                                                                                                            
+  A jelen projektben háromszög és trapéz alakú tagsági függvényeket alkalmazunk, amelyek jó kompromisszumot jelentenek a számítási egyszerűség és a szabályozási minőség között.            
+                                                                                                                                                                                            
+  2.3 Fuzzy következtetési rendszerek                                                                                                                                                       
+                                                                                                                                                                                            
+  A fuzzy következtetési rendszer (Fuzzy Inference System, FIS) a fuzzy logika gyakorlati alkalmazásának központi eleme. A rendszer nyelvi szabályok halmazát használja a bemenetek és      
+  kimenetek közötti kapcsolat leírására.                                                                                                                                                    
+                                                                                                                                                                                            
+  Egy tipikus fuzzy szabály alakja:                                                                                                                                                         
+                                                                                                                                                                                            
+  HA (előzmény1) ÉS (előzmény2) AKKOR (következmény)                                                                                                                                        
+                                                                                                                                                                                            
+  Például: HA a szög pozitív nagy ÉS a szögsebesség nulla AKKOR az erő negatív nagy.                                                                                                        
+                                                                                                                                                                                            
+  A fuzzy következtetés folyamata a következő lépésekből áll:                                                                                                                               
+                                                                                                                                                                                            
+  1. Fuzzifikáció: A crisp bemeneti értékek átalakítása fuzzy értékekké a tagsági függvények segítségével.                                                                                  
+  2. Szabálykiértékelés: Minden szabály előzményének kiértékelése. Az ÉS kapcsolatot általában a minimum operátorral, a VAGY kapcsolatot a maximum operátorral valósítjuk meg.              
+  3. Implikáció: A szabály következményének módosítása az előzmény teljesülési fokának megfelelően.                                                                                         
+  4. Aggregáció: Az összes szabály kimenetének egyesítése egyetlen fuzzy halmazzá.                                                                                                          
+  5. Defuzzifikáció: A fuzzy kimenet átalakítása crisp értékké.                                                                                                                             
+                                                                                                                                                                                            
+  2.4 Mamdani-típusú fuzzy rendszerek                                                                                                                                                       
+                                                                                                                                                                                            
+  A Mamdani-típusú fuzzy rendszert Ebrahim Mamdani és Sedrak Assilian fejlesztette ki 1975-ben egy gőzgép szabályozására. Ez a megközelítés vált a legelterjedtebbé az ipari alkalmazásokban
+   az intuitív szabálymegfogalmazás és a jó értelmezhetőség miatt.                                                                                                                          
+                                                                                                                                                                                            
+  A Mamdani-rendszer fő jellemzői:                                                                                                                                                          
+                                                                                                                                                                                            
+  - Mind a bemeneti, mind a kimeneti változók fuzzy halmazokkal vannak leírva                                                                                                               
+  - A szabályok mind az előzményben, mind a következményben fuzzy halmazokat használnak                                                                                                     
+  - Az implikáció általában minimum vagy szorzat operátorral történik                                                                                                                       
+  - Az aggregáció maximum operátorral valósul meg                                                                                                                                           
+                                                                                                                                                                                            
+  A Mamdani-rendszer előnye, hogy a szabályok könnyen érthetők és módosíthatók, mivel közvetlenül tükrözik az emberi szakértői tudást. Hátránya a viszonylag nagy számítási igény a         
+  defuzzifikáció során.                                                                                                                                                                     
+                                                                                                                                                                                            
+  Alternatívaként létezik a Sugeno-típusú (vagy Takagi-Sugeno-Kang) fuzzy rendszer, ahol a kimenet nem fuzzy halmaz, hanem a bemenetek lineáris kombinációja. Ez számításilag hatékonyabb,  
+  de kevésbé intuitív.                                                                                                                                                                      
+                                                                                                                                                                                            
+  A jelen projektben Mamdani-típusú rendszert alkalmazunk, amely 5 bemeneti fuzzy halmazt használ a rúdszög leírására (NL, NS, Z, PS, PL), és hasonló struktúrát a többi változóra is.      
+                                                                                                                                                                                            
+  2.5 Defuzzifikáció                                                                                                                                                                        
+                                                                                                                                                                                            
+  A defuzzifikáció az a folyamat, amely során a fuzzy következtetés eredményeként kapott fuzzy halmazt egyetlen crisp értékké alakítjuk. Számos defuzzifikációs módszer létezik,            
+  mindegyiknek megvannak az előnyei és hátrányai.                                                                                                                                           
+                                                                                                                                                                                            
+  Súlypont módszer (Centroid of Area, COA): A leggyakrabban használt módszer. A kimeneti fuzzy halmaz súlypontját számítja ki:                                                              
+                                                                                                                                                                                            
+  z* = ∫μ(z)·z dz / ∫μ(z) dz                                                                                                                                                                
+                                                                                                                                                                                            
+  Ez a módszer sima, folytonos kimenetet ad, és figyelembe veszi a teljes kimeneti tartományt. A projektben ezt a módszert alkalmazzuk.                                                     
+                                                                                                                                                                                            
+  Középértékek átlaga (Mean of Maximum, MOM): A maximális tagsági értékű pontok átlagát adja. Gyorsabb, de kevésbé pontos.                                                                  
+                                                                                                                                                                                            
+  Első maximum (First of Maximum, FOM): A maximális tagsági értékű legkisebb z értéket adja.                                                                                                
+                                                                                                                                                                                            
+  Biszektor módszer: A kimeneti fuzzy halmazt két egyenlő területű részre osztó pontot adja.                                                                                                
+                                                                                                                                                                                            
+  ---                                                                                                                                                                                       
+  3. A CartPole Szimuláció Működése                                                                                                                                                         
+                                                                                                                                                                                            
+  3.1 A CartPole probléma leírása                                                                                                                                                           
+                                                                                                                                                                                            
+  A CartPole (más néven inverz inga vagy rúd-kocsi rendszer) az irányításelmélet és a megerősítéses tanulás egyik legklasszikusabb benchmark feladata. A rendszer egy vízszintes sínen mozgó
+   kocsiból és egy hozzá csuklósan rögzített rúdból áll. A rúd szabadon lenghet a kocsi felett, és a cél a rúd függőleges pozícióban tartása a kocsira ható vízszintes erő megfelelő        
+  szabályozásával.                                                                                                                                                                          
+                                                                                                                                                                                            
+  A probléma nehézsége abban rejlik, hogy a függőleges pozíció instabil egyensúlyi pont. Bármilyen kis perturbáció hatására a rúd elkezdene dőlni és végül leesne, ha nem avatkozunk be. Az 
+  irányítási feladat tehát az, hogy folyamatosan korrigáljuk a kocsi pozícióját úgy, hogy a rúd a függőleges közelében maradjon.                                                            
+                                                                                                                                                                                            
+  A feladat további nehezítése, hogy a kocsi mozgástere korlátozott – nem haladhat túl a pálya szélein. Emiatt a vezérlőnek nem csak a rúd egyensúlyozására, hanem a kocsi centrálására is  
+  figyelnie kell.                                                                                                                                                                           
+                                                                                                                                                                                            
+  A projektben implementált környezet folytonos erőbemenetet használ a diszkrét bal/jobb akciók helyett. Ez realisztikusabb fizikai modellt és finomabb szabályozási lehetőséget biztosít.  
+                                                                                                                                                                                            
+  3.2 Fizikai modell és egyenletek                                                                                                                                                          
+                                                                                                                                                                                            
+  A CartPole rendszer dinamikáját a klasszikus mechanika törvényei írják le. Jelöljük a következő változókat:                                                                               
+                                                                                                                                                                                            
+  - M: a kocsi tömege (kg)                                                                                                                                                                  
+  - m: a rúd tömege (kg)                                                                                                                                                                    
+  - l: a rúd félhossza (m) – a forgástengely és a tömegközéppont közötti távolság                                                                                                           
+  - g: gravitációs gyorsulás (m/s²)                                                                                                                                                         
+  - θ: a rúd szöge a függőlegestől (rad)                                                                                                                                                    
+  - x: a kocsi pozíciója (m)                                                                                                                                                                
+  - F: a kocsira ható külső erő (N)                                                                                                                                                         
+                                                                                                                                                                                            
+  A rendszer mozgásegyenletei a Lagrange-formalizmus alapján:                                                                                                                               
+                                                                                                                                                                                            
+  Szöggyorsulás:                                                                                                                                                                            
+  θ̈ = [g·sin(θ) + cos(θ)·(-F - m·l·θ̇²·sin(θ))/(M+m)] / [l·(4/3 - m·cos²(θ)/(M+m))]                                                                                                        
+                                                                                                                                                                                            
+  Kocsi gyorsulása:                                                                                                                                                                         
+  ẍ = [F + m·l·(θ̇²·sin(θ) - θ̈·cos(θ))] / (M+m)                                                                                                                                            
+                                                                                                                                                                                            
+  Ezek az egyenletek nemlineárisak, ami a szabályozási feladatot különösen érdekessé teszi. A kis szögű közelítésben (sin(θ) ≈ θ, cos(θ) ≈ 1) az egyenletek linearizálhatók, de a fuzzy     
+  rendszer a nemlineáris esetben is hatékonyan működik.                                                                                                                                     
+                                                                                                                                                                                            
+  A projektben használt tipikus paraméterértékek:                                                                                                                                           
+  - M = 1.0 kg (kocsi tömege)                                                                                                                                                               
+  - m = 0.1 kg (rúd tömege)                                                                                                                                                                 
+  - l = 0.5 m (rúd félhossza)                                                                                                                                                               
+  - g = 9.8 m/s² (gravitációs gyorsulás)                                                                                                                                                    
+                                                                                                                                                                                            
+  3.3 Állapottér és megfigyelések                                                                                                                                                           
+                                                                                                                                                                                            
+  A CartPole rendszer állapotát négy változó írja le, amelyek a fuzzy vezérlő bemeneteiként szolgálnak:                                                                                     
+                                                                                                                                                                                            
+  1. Kocsi pozíció (x): A kocsi vízszintes pozíciója méterben. A pálya közepe a 0 pont, a pozitív irány jobbra mutat. A megengedett tartomány tipikusan [-2.4, 2.4] méter.                  
+  2. Kocsi sebesség (ẋ): A kocsi vízszintes sebessége m/s-ban. Pozitív érték jobbra irányuló mozgást jelent.                                                                                
+  3. Rúd szög (θ): A rúd szöge a függőleges iránytól radiánban mérve. Pozitív szög jobbra dőlést jelent. A kritikus határérték tipikusan ±0.21 radián (kb. ±12 fok).                        
+  4. Szögsebesség (θ̇): A rúd szögsebessége rad/s-ban. Pozitív érték az óramutató járásával megegyező irányú forgást jelent.                                                                
+                                                                                                                                                                                            
+  A szimuláció diszkrét időlépésekben (dt = 0.02 s, azaz 50 Hz) frissíti az állapotot az Euler-módszer vagy a Runge-Kutta integrátor segítségével.                                          
+                                                                                                                                                                                            
+  3.4 A szimuláció futtatása                                                                                                                                                                
+                                                                                                                                                                                            
+  A szimuláció inicializálásakor a rendszer véletlenszerű kezdőállapotból indul. Ez biztosítja, hogy a vezérlő különböző körülmények között is tesztelhető legyen. A kezdőértékek tipikus   
+  tartományai:                                                                                                                                                                              
+                                                                                                                                                                                            
+  - Kocsi pozíció: [-0.5, 0.5] m                                                                                                                                                            
+  - Kocsi sebesség: [-0.5, 0.5] m/s                                                                                                                                                         
+  - Rúd szög: [-0.1, 0.1] rad (kb. ±5.7 fok)                                                                                                                                                
+  - Szögsebesség: [-0.5, 0.5] rad/s                                                                                                                                                         
+                                                                                                                                                                                            
+  Minden időlépésben a következő műveletek történnek:                                                                                                                                       
+                                                                                                                                                                                            
+  1. Az aktuális állapot leolvasása a környezetből                                                                                                                                          
+  2. A fuzzy vezérlő kiértékelése és az erőérték meghatározása                                                                                                                              
+  3. Az erő alkalmazása a környezetre                                                                                                                                                       
+  4. A környezet állapotának frissítése a fizikai egyenletek alapján                                                                                                                        
+  5. A jutalom kiszámítása és az adatok naplózása                                                                                                                                           
+                                                                                                                                                                                            
+  A szimuláció akkor ér véget, ha:                                                                                                                                                          
+  - A rúd szöge meghaladja a kritikus értéket (±0.21 rad)                                                                                                                                   
+  - A kocsi pozíciója túllépi a pálya határait (±2.4 m)                                                                                                                                     
+  - Elérjük a maximális lépésszámot (pl. 500 vagy 1000 lépés)                                                                                                                               
+                                                                                                                                                                                            
+  ---                                                                                                                                                                                       
+  4. Az Irányítási Rendszer Felépítése                                                                                                                                                      
+                                                                                                                                                                                            
+  4.1 Bemeneti univerzumok                                                                                                                                                                  
+                                                                                                                                                                                            
+  A fuzzy irányítási rendszer négy bemeneti változót használ, mindegyikhez definiált univerzummal és tagsági függvényekkel.                                                                 
+                                                                                                                                                                                            
+  Rúd szög (angle)                                                                                                                                                                          
+                                                                                                                                                                                            
+  Az univerzum tartománya: [-1, 1] radián                                                                                                                                                   
+                                                                                                                                                                                            
+  Ez a tartomány jóval szélesebb a kritikus határértéknél, ami biztosítja, hogy a rendszer extrém esetekben is működjön. A gyakorlatban a vezérlő az [-0.1, 0.1] radiános tartományban aktív
+   leginkább, ahol a finom korrekciók történnek.                                                                                                                                            
+                                                                                                                                                                                            
+  Öt tagsági függvény van definiálva:                                                                                                                                                       
+  - NL (Negative Large): Nagy negatív szög, balra erősen dőlő rúd                                                                                                                           
+  - NS (Negative Small): Kis negatív szög, enyhén balra dőlő rúd                                                                                                                            
+  - Z (Zero): Közel függőleges pozíció                                                                                                                                                      
+  - PS (Positive Small): Kis pozitív szög, enyhén jobbra dőlő rúd                                                                                                                           
+  - PL (Positive Large): Nagy pozitív szög, jobbra erősen dőlő rúd                                                                                                                          
+                                                                                                                                                                                            
+  A tagsági függvények szimmetrikusak a nulla körül, és megfelelő átfedéssel rendelkeznek a sima átmenetek biztosítása érdekében.                                                           
+                                                                                                                                                                                            
+  Szögsebesség (angular_velocity)                                                                                                                                                           
+                                                                                                                                                                                            
+  Az univerzum tartománya: [-3, 3] rad/s                                                                                                                                                    
+                                                                                                                                                                                            
+  Három tagsági függvény:                                                                                                                                                                   
+  - N (Negative): Negatív szögsebesség, óramutató járásával ellentétes irányú forgás                                                                                                        
+  - Z (Zero): Közel nulla szögsebesség, stabil állapot                                                                                                                                      
+  - P (Positive): Pozitív szögsebesség, óramutató járásával megegyező irányú forgás                                                                                                         
+                                                                                                                                                                                            
+  Kocsi pozíció (cart_position)                                                                                                                                                             
+                                                                                                                                                                                            
+  Az univerzum tartománya: [-3, 3] méter                                                                                                                                                    
+                                                                                                                                                                                            
+  Három tagsági függvény:                                                                                                                                                                   
+  - N (Negative): Balra eltolódott kocsi                                                                                                                                                    
+  - Z (Zero): Középen lévő kocsi                                                                                                                                                            
+  - P (Positive): Jobbra eltolódott kocsi                                                                                                                                                   
+                                                                                                                                                                                            
+  Kocsi sebesség (cart_velocity)                                                                                                                                                            
+                                                                                                                                                                                            
+  Az univerzum tartománya: [-1, 1] m/s                                                                                                                                                      
+                                                                                                                                                                                            
+  Három tagsági függvény:                                                                                                                                                                   
+  - N (Negative): Balra mozgó kocsi                                                                                                                                                         
+  - Z (Zero): Álló vagy lassan mozgó kocsi                                                                                                                                                  
+  - P (Positive): Jobbra mozgó kocsi                                                                                                                                                        
+                                                                                                                                                                                            
+  4.2 Kimeneti univerzum                                                                                                                                                                    
+                                                                                                                                                                                            
+  A rendszer egyetlen kimeneti változóval rendelkezik: a kocsira ható vízszintes erő.                                                                                                       
+                                                                                                                                                                                            
+  Erő (force)                                                                                                                                                                               
+                                                                                                                                                                                            
+  Az univerzum tartománya: [-10, 10] Newton                                                                                                                                                 
+                                                                                                                                                                                            
+  Öt tagsági függvény:                                                                                                                                                                      
+  - NL (Negative Large): Erős balra irányuló erő (-10 N körül)                                                                                                                              
+  - NS (Negative Small): Gyenge balra irányuló erő (-5 N körül)                                                                                                                             
+  - Z (Zero): Nulla vagy minimális erő                                                                                                                                                      
+  - PS (Positive Small): Gyenge jobbra irányuló erő (+5 N körül)                                                                                                                            
+  - PL (Positive Large): Erős jobbra irányuló erő (+10 N körül)                                                                                                                             
+                                                                                                                                                                                            
+  A kimeneti tagsági függvények is szimmetrikus elrendezésűek, és a súlypont módszerrel történő defuzzifikáció sima, folytonos erőjelet eredményez.                                         
+                                                                                                                                                                                            
+  4.3 Tagsági függvények                                                                                                                                                                    
+                                                                                                                                                                                            
+  A projektben háromszög és trapéz alakú tagsági függvényeket használunk. A pontos paraméterek gondos hangolás eredményei, amelyek figyelembe veszik a rendszer dinamikáját és a kívánt     
+  szabályozási viselkedést.                                                                                                                                                                 
+                                                                                                                                                                                            
+  Rúd szög tagsági függvényei:                                                                                                                                                              
+  ┌────────┬───────────┬───────────────────────┐                                                                                                                                            
+  │ Halmaz │   Típus   │      Paraméterek      │                                                                                                                                            
+  ├────────┼───────────┼───────────────────────┤                                                                                                                                            
+  │ NL     │ Trapéz    │ [-1, -1, -0.1, -0.05] │                                                                                                                                            
+  ├────────┼───────────┼───────────────────────┤                                                                                                                                            
+  │ NS     │ Háromszög │ [-0.1, -0.05, 0]      │                                                                                                                                            
+  ├────────┼───────────┼───────────────────────┤                                                                                                                                            
+  │ Z      │ Háromszög │ [-0.05, 0, 0.05]      │                                                                                                                                            
+  ├────────┼───────────┼───────────────────────┤                                                                                                                                            
+  │ PS     │ Háromszög │ [0, 0.05, 0.1]        │                                                                                                                                            
+  ├────────┼───────────┼───────────────────────┤                                                                                                                                            
+  │ PL     │ Trapéz    │ [0.05, 0.1, 1, 1]     │                                                                                                                                            
+  └────────┴───────────┴───────────────────────┘                                                                                                                                            
+  A szög tagsági függvényei koncentráltan helyezkednek el a nulla körül, mivel a vezérlés szempontjából a kis szögeltérések a legfontosabbak. A nagy szögeknél már csak az erős korrekció   
+  számít.                                                                                                                                                                                   
+                                                                                                                                                                                            
+  Szögsebesség tagsági függvényei:                                                                                                                                                          
+  ┌────────┬───────────┬─────────────────┐                                                                                                                                                  
+  │ Halmaz │   Típus   │   Paraméterek   │                                                                                                                                                  
+  ├────────┼───────────┼─────────────────┤                                                                                                                                                  
+  │ N      │ Trapéz    │ [-3, -3, -1, 0] │                                                                                                                                                  
+  ├────────┼───────────┼─────────────────┤                                                                                                                                                  
+  │ Z      │ Háromszög │ [-1, 0, 1]      │                                                                                                                                                  
+  ├────────┼───────────┼─────────────────┤                                                                                                                                                  
+  │ P      │ Trapéz    │ [0, 1, 3, 3]    │                                                                                                                                                  
+  └────────┴───────────┴─────────────────┘                                                                                                                                                  
+  Kocsi pozíció tagsági függvényei:                                                                                                                                                         
+  ┌────────┬───────────┬───────────────────┐                                                                                                                                                
+  │ Halmaz │   Típus   │    Paraméterek    │                                                                                                                                                
+  ├────────┼───────────┼───────────────────┤                                                                                                                                                
+  │ N      │ Trapéz    │ [-3, -3, -0.5, 0] │                                                                                                                                                
+  ├────────┼───────────┼───────────────────┤                                                                                                                                                
+  │ Z      │ Háromszög │ [-0.5, 0, 0.5]    │                                                                                                                                                
+  ├────────┼───────────┼───────────────────┤                                                                                                                                                
+  │ P      │ Trapéz    │ [0, 0.5, 3, 3]    │                                                                                                                                                
+  └────────┴───────────┴───────────────────┘                                                                                                                                                
+  Erő kimeneti tagsági függvényei:                                                                                                                                                          
+  ┌────────┬───────────┬────────────────────┐                                                                                                                                               
+  │ Halmaz │   Típus   │    Paraméterek     │                                                                                                                                               
+  ├────────┼───────────┼────────────────────┤                                                                                                                                               
+  │ NL     │ Trapéz    │ [-10, -10, -7, -3] │                                                                                                                                               
+  ├────────┼───────────┼────────────────────┤                                                                                                                                               
+  │ NS     │ Háromszög │ [-5, -3, 0]        │                                                                                                                                               
+  ├────────┼───────────┼────────────────────┤                                                                                                                                               
+  │ Z      │ Háromszög │ [-2, 0, 2]         │                                                                                                                                               
+  ├────────┼───────────┼────────────────────┤                                                                                                                                               
+  │ PS     │ Háromszög │ [0, 3, 5]          │                                                                                                                                               
+  ├────────┼───────────┼────────────────────┤                                                                                                                                               
+  │ PL     │ Trapéz    │ [3, 7, 10, 10]     │                                                                                                                                               
+  └────────┴───────────┴────────────────────┘                                                                                                                                               
+  4.4 Szabálybázis                                                                                                                                                                          
+                                                                                                                                                                                            
+  A fuzzy vezérlő összesen 24 szabályt tartalmaz, amelyek két fő csoportra oszlanak: rúd egyensúlyozási szabályok és kocsi centrálási szabályok.                                            
+                                                                                                                                                                                            
+  Rúd egyensúlyozási szabályok (18 szabály)                                                                                                                                                 
+                                                                                                                                                                                            
+  Ezek a szabályok a rúd szöge és szögsebessége alapján határozzák meg az erőt. A cél a rúd stabilizálása a függőleges pozícióban.                                                          
+  ┌─────┬──────┬──────────────┬─────┐                                                                                                                                                       
+  │  #  │ Szög │ Szögsebesség │ Erő │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 1   │ NL   │ N            │ NL  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 2   │ NL   │ Z            │ NL  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 3   │ NL   │ P            │ NL  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 4   │ NS   │ N            │ NL  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 5   │ NS   │ Z            │ NS  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 6   │ NS   │ P            │ Z   │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 7   │ Z    │ N            │ NS  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 8   │ Z    │ Z            │ Z   │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 9   │ Z    │ P            │ PS  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 10  │ PS   │ N            │ Z   │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 11  │ PS   │ Z            │ PS  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 12  │ PS   │ P            │ PL  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 13  │ PL   │ N            │ PL  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 14  │ PL   │ Z            │ PL  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 15  │ PL   │ P            │ PL  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 16  │ NL   │ -            │ NL  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 17  │ PL   │ -            │ PL  │                                                                                                                                                       
+  ├─────┼──────┼──────────────┼─────┤                                                                                                                                                       
+  │ 18  │ -    │ -            │ Z   │                                                                                                                                                       
+  └─────┴──────┴──────────────┴─────┘                                                                                                                                                       
+  A szabályok logikája a következő elveken alapul:                                                                                                                                          
+                                                                                                                                                                                            
+  1. Ha a rúd erősen egy irányba dől (NL vagy PL), akkor erős ellentétes irányú erőt kell alkalmazni, függetlenül a sebességtől.                                                            
+  2. Ha a rúd enyhén dől és a sebesség ellentétes irányba mutat (visszafele esik), akkor gyengébb korrekció is elegendő.                                                                    
+  3. Ha a rúd enyhén dől és a sebesség ugyanabba az irányba mutat (tovább esik), akkor erősebb korrekció szükséges.                                                                         
+  4. Ha a rúd közel függőleges és a sebesség is kicsi, akkor minimális beavatkozás elegendő.                                                                                                
+                                                                                                                                                                                            
+  Kocsi centrálási szabályok (6 szabály)                                                                                                                                                    
+                                                                                                                                                                                            
+  Ezek a szabályok a kocsi pozíciója és sebessége alapján korrigálják a kocsi helyzetét, hogy ne mozduljon el túlságosan a pálya széle felé.                                                
+  ┌─────┬─────────┬──────────┬─────┐                                                                                                                                                        
+  │  #  │ Pozíció │ Sebesség │ Erő │                                                                                                                                                        
+  ├─────┼─────────┼──────────┼─────┤                                                                                                                                                        
+  │ 19  │ N       │ N        │ PS  │                                                                                                                                                        
+  ├─────┼─────────┼──────────┼─────┤                                                                                                                                                        
+  │ 20  │ N       │ P        │ Z   │                                                                                                                                                        
+  ├─────┼─────────┼──────────┼─────┤                                                                                                                                                        
+  │ 21  │ P       │ P        │ NS  │                                                                                                                                                        
+  ├─────┼─────────┼──────────┼─────┤                                                                                                                                                        
+  │ 22  │ P       │ N        │ Z   │                                                                                                                                                        
+  ├─────┼─────────┼──────────┼─────┤                                                                                                                                                        
+  │ 23  │ N       │ Z        │ PS  │                                                                                                                                                        
+  ├─────┼─────────┼──────────┼─────┤                                                                                                                                                        
+  │ 24  │ P       │ Z        │ NS  │                                                                                                                                                        
+  └─────┴─────────┴──────────┴─────┘                                                                                                                                                        
+  A centrálási szabályok kisebb prioritásúak, mint az egyensúlyozási szabályok, mivel a rúd leejtése azonnali kudarc, míg a kocsi sodródása lassabb folyamat.                               
+                                                                                                                                                                                            
+  4.5 Az integráló tag hatása                                                                                                                                                               
+                                                                                                                                                                                            
+  A tisztán proporcionális jellegű fuzzy szabályozó mellett a rendszer tartalmaz egy integráló komponenst is, amely a kocsi pozíció hibájának időbeli felgyülemlését kezeli. Ez az integráló
+   tag kulcsfontosságú a tartós egyensúlyozáshoz.                                                                                                                                           
+                                                                                                                                                                                            
+  Az integráló tag működése:                                                                                                                                                                
+                                                                                                                                                                                            
+  A kocsi pozíció hibáját (eltérés a középponttól) folyamatosan integráljuk:                                                                                                                
+                                                                                                                                                                                            
+  integral += position_error * dt                                                                                                                                                           
+                                                                                                                                                                                            
+  Az integrált értéket egy erősítési tényezővel (Ki) megszorozva hozzáadjuk a fuzzy kimenethez:                                                                                             
+                                                                                                                                                                                            
+  total_force = fuzzy_force + Ki * integral                                                                                                                                                 
+                                                                                                                                                                                            
+  Anti-windup mechanizmus:                                                                                                                                                                  
+                                                                                                                                                                                            
+  Az integrál értékének korlátlan növekedését (windup) meg kell akadályozni, különben a rendszer instabillá válhat. Erre két technikát alkalmazunk:                                         
+                                                                                                                                                                                            
+  1. Határérték korlátozás: Az integrál értéke nem lépheti túl a maximális megengedett értéket (pl. ±5).                                                                                    
+  2. Automatikus csökkentés: Ha a rúd szöge meghalad egy küszöbértéket, az integrál értékét fokozatosan csökkentjük. Ez biztosítja, hogy válsághelyzetben az egyensúlyozás élvezzen         
+  prioritást a centrálással szemben.                                                                                                                                                        
+                                                                                                                                                                                            
+  Az integráló tag szerepe:                                                                                                                                                                 
+                                                                                                                                                                                            
+  Az integráló komponens nélkül a rendszer hajlamos lenne a következő problémákra:                                                                                                          
+                                                                                                                                                                                            
+  1. Tartós pozícióhiba: A kocsi lassan, de folyamatosan sodródna egy irányba.                                                                                                              
+  2. Korlát elérése: Hosszabb idő után a kocsi elérné a pálya szélét és a szimuláció véget érne.                                                                                            
+  3. Aszimmetrikus viselkedés: Kezdeti eltolódás esetén a rendszer nem térne vissza a középpontba.                                                                                          
+                                                                                                                                                                                            
+  Az integráló tag hatására a rendszer:                                                                                                                                                     
+                                                                                                                                                                                            
+  - Kiküszöböli a tartós pozícióhibát                                                                                                                                                       
+  - Aktívan visszatereli a kocsit a középpontba                                                                                                                                             
+  - Hosszabb epizódokat tesz lehetővé                                                                                                                                                       
+  - Robusztusabb működést biztosít zavarások esetén                                                                                                                                         
+                                                                                                                                                                                            
+  A Ki erősítési tényező értékének megválasztása kompromisszum eredménye. Túl kis érték esetén lassú a korrekció, túl nagy érték esetén oszcilláció léphet fel.                             
+                                                                                                                                                                                            
+  ---                                                                                                                                                                                       
+  5. Kimeneti Eredmények                                                                                                                                                                    
+                                                                                                                                                                                            
+  5.1 Szimulációs paraméterek                                                                                                                                                               
+                                                                                                                                                                                            
+  A szimulációs tesztek során a következő paramétereket használtuk:                                                                                                                         
+                                                                                                                                                                                            
+  Környezeti paraméterek:                                                                                                                                                                   
+  - Időlépés (dt): 0.02 s (50 Hz frissítési frekvencia)                                                                                                                                     
+  - Maximális lépésszám epizódonként: 500 lépés (10 másodperc)                                                                                                                              
+  - Epizódok száma: 10                                                                                                                                                                      
+  - Vizualizáció: engedélyezve                                                                                                                                                              
+                                                                                                                                                                                            
+  Fizikai paraméterek:                                                                                                                                                                      
+  - Kocsi tömege: 1.0 kg                                                                                                                                                                    
+  - Rúd tömege: 0.1 kg                                                                                                                                                                      
+  - Rúd hossza: 1.0 m (félhossz: 0.5 m)                                                                                                                                                     
+  - Gravitációs gyorsulás: 9.8 m/s²                                                                                                                                                         
+  - Maximális erő: ±10 N                                                                                                                                                                    
+                                                                                                                                                                                            
+  Kezdeti állapot tartományok:                                                                                                                                                              
+  - Kocsi pozíció: -0.2 m                                                                                                                                                                   
+  - Kocsi sebesség: 0.1 m/s                                                                                                                                                                 
+  - Rúd szög: 0.02 rad (kb. 1.15 fok)                                                                                                                                                       
+  - Szögsebesség: 0.1 rad/s                                                                                                                                                                 
+                                                                                                                                                                                            
+  Leállási feltételek:                                                                                                                                                                      
+  - Rúd szög határérték: ±0.21 rad (±12 fok)                                                                                                                                                
+  - Kocsi pozíció határérték: ±2.4 m                                                                                                                                                        
+                                                                                                                                                                                            
+  5.2 Mérési eredmények                                                                                                                                                                     
+                                                                                                                                                                                            
+  A 10 epizódból álló tesztsorozat részletes eredményei:                                                                                                                                    
+  ┌────────┬─────────┬─────────┬────────────────┬─────────────────┬───────────────┐                                                                                                         
+  │ Epizód │ Lépések │ Jutalom │ Max szög (fok) │ Max pozíció (m) │ Átlag erő (N) │                                                                                                         
+  ├────────┼─────────┼─────────┼────────────────┼─────────────────┼───────────────┤                                                                                                         
+  │ 1      │ 500     │ 498.7   │ 3.24           │ 0.82            │ 1.23          │                                                                                                         
+  ├────────┼─────────┼─────────┼────────────────┼─────────────────┼───────────────┤                                                                                                         
+  │ 2      │ 500     │ 497.2   │ 4.12           │ 0.95            │ 1.45          │                                                                                                         
+  ├────────┼─────────┼─────────┼────────────────┼─────────────────┼───────────────┤                                                                                                         
+  │ 3      │ 500     │ 499.1   │ 2.87           │ 0.71            │ 1.12          │                                                                                                         
+  ├────────┼─────────┼─────────┼────────────────┼─────────────────┼───────────────┤                                                                                                         
+  │ 4      │ 487     │ 485.3   │ 5.67           │ 1.23            │ 1.78          │                                                                                                         
+  ├────────┼─────────┼─────────┼────────────────┼─────────────────┼───────────────┤                                                                                                         
+  │ 5      │ 500     │ 498.4   │ 3.56           │ 0.88            │ 1.34          │                                                                                                         
+  ├────────┼─────────┼─────────┼────────────────┼─────────────────┼───────────────┤                                                                                                         
+  │ 6      │ 500     │ 497.8   │ 4.01           │ 0.92            │ 1.41          │                                                                                                         
+  ├────────┼─────────┼─────────┼────────────────┼─────────────────┼───────────────┤                                                                                                         
+  │ 7      │ 500     │ 499.3   │ 2.65           │ 0.65            │ 1.08          │                                                                                                         
+  ├────────┼─────────┼─────────┼────────────────┼─────────────────┼───────────────┤                                                                                                         
+  │ 8      │ 463     │ 461.5   │ 6.12           │ 1.45            │ 1.92          │                                                                                                         
+  ├────────┼─────────┼─────────┼────────────────┼─────────────────┼───────────────┤                                                                                                         
+  │ 9      │ 500     │ 498.9   │ 3.12           │ 0.78            │ 1.21          │                                                                                                         
+  ├────────┼─────────┼─────────┼────────────────┼─────────────────┼───────────────┤                                                                                                         
+  │ 10     │ 500     │ 497.6   │ 3.89           │ 0.89            │ 1.38          │                                                                                                         
+  └────────┴─────────┴─────────┴────────────────┴─────────────────┴───────────────┘                                                                                                         
+  Összesített statisztikák:                                                                                                                                                                 
+  ┌──────────────────────────────────┬───────────────────────────────┐                                                                                                                      
+  │             Metrika              │             Érték             │                                                                                                                      
+  ├──────────────────────────────────┼───────────────────────────────┤                                                                                                                      
+  │ Átlagos lépésszám                │ 495.0                         │                                                                                                                      
+  ├──────────────────────────────────┼───────────────────────────────┤                                                                                                                      
+  │ Átlagos jutalom                  │ 493.4                         │                                                                                                                      
+  ├──────────────────────────────────┼───────────────────────────────┤                                                                                                                      
+  │ Sikeres epizódok (500 lépés)     │ 8/10 (80%)                    │                                                                                                                      
+  ├──────────────────────────────────┼───────────────────────────────┤                                                                                                                      
+  │ Legjobb epizód                   │ #7 (500 lépés, 499.3 jutalom) │                                                                                                                      
+  ├──────────────────────────────────┼───────────────────────────────┤                                                                                                                      
+  │ Legrosszabb epizód               │ #8 (463 lépés, 461.5 jutalom) │                                                                                                                      
+  ├──────────────────────────────────┼───────────────────────────────┤                                                                                                                      
+  │ Átlagos maximális szögeltérés    │ 3.93 fok                      │                                                                                                                      
+  ├──────────────────────────────────┼───────────────────────────────┤                                                                                                                      
+  │ Átlagos maximális pozícióeltérés │ 0.93 m                        │                                                                                                                      
+  └──────────────────────────────────┴───────────────────────────────┘                                                                                                                      
+  5.3 Teljesítményértékelés                                                                                                                                                                 
+                                                                                                                                                                                            
+  Stabilitás:                                                                                                                                                                               
+                                                                                                                                                                                            
+  A fuzzy vezérlő a tesztek 80%-ában sikeresen teljesítette a teljes 500 lépéses epizódot. Ez kiváló eredménynek tekinthető, különösen figyelembe véve, hogy a rendszer véletlenszerű       
+  kezdőállapotokból indult.                                                                                                                                                                 
+                                                                                                                                                                                            
+  A sikertelen epizódok elemzése azt mutatja, hogy a kudarc általában akkor következett be, amikor a kezdeti szögsebesség és a szög előjele megegyezett (a rúd "kifele" esett), és az       
+  értékek a tartomány felső határához közel voltak.                                                                                                                                         
+                                                                                                                                                                                            
+  Reakcióidő:                                                                                                                                                                               
+                                                                                                                                                                                            
+  A vezérlő reakcióideje megfelelő a 50 Hz-es frissítési frekvenciához. A szögeltérés detektálása és a korrekciós erő alkalmazása között nincs észlelhető késleltetés, ami a fuzzy rendszer 
+  valós idejű jellegéből adódik.                                                                                                                                                            
+                                                                                                                                                                                            
+  Energiahatékonyság:                                                                                                                                                                       
+                                                                                                                                                                                            
+  Az átlagos erőkifejtés (1.34 N) viszonylag alacsony a maximális ±10 N tartományhoz képest. Ez azt jelzi, hogy a vezérlő gazdaságosan működik, és nem alkalmaz szükségtelen erős           
+  korrekciókat.                                                                                                                                                                             
+                                                                                                                                                                                            
+  Pozíció-centrálás:                                                                                                                                                                        
+                                                                                                                                                                                            
+  Az integráló tag hatékonyan működik: az átlagos maximális pozícióeltérés mindössze 0.93 m, ami jóval a 2.4 m-es határ alatt van. A kocsi tendenciózus elmozdulása minimális.              
+                                                                                                                                                                                            
+  5.4 Grafikus eredmények                                                                                                                                                                   
+                                                                                                                                                                                            
+  A szimuláció során a következő grafikonokat generáljuk:                                                                                                                                   
+                                                                                                                                                                                            
+  1. Tagsági függvények vizualizációja                                                                                                                                                      
+                                                                                                                                                                                            
+  Négy almezőben ábrázoljuk a bemeneti és kimeneti változók tagsági függvényeit:                                                                                                            
+                                                                                                                                                                                            
+  - Rúd szög: 5 tagsági függvény a [-0.15, 0.15] rad tartományban (nagyítva a releváns régióra)                                                                                             
+  - Szögsebesség: 3 tagsági függvény a [-3, 3] rad/s tartományban                                                                                                                           
+  - Kocsi pozíció: 3 tagsági függvény a [-3, 3] m tartományban                                                                                                                              
+  - Kimeneti erő: 5 tagsági függvény a [-10, 10] N tartományban                                                                                                                             
+                                                                                                                                                                                            
+  2. Irányítási felület (Control Surface)                                                                                                                                                   
+                                                                                                                                                                                            
+  3D felületi diagram, amely megmutatja a kimeneti erő értékét a rúd szög és szögsebesség függvényében. Ez a grafikon szemléletesen demonstrálja a fuzzy szabálybázis nemlineáris jellegét. 
+                                                                                                                                                                                            
+  A felület jellemzői:                                                                                                                                                                      
+  - Szimmetrikus a (0, 0) pont körül                                                                                                                                                        
+  - Meredek gradiensek a nagy szögértékeknél                                                                                                                                                
+  - Lapos régió a nulla szög és nulla sebesség közelében                                                                                                                                    
+  - Folytonos, sima felület a tagsági függvények átfedése miatt                                                                                                                             
+                                                                                                                                                                                            
+  3. Szimulációs eredmények időbeli lefutása                                                                                                                                                
+                                                                                                                                                                                            
+  Négy almezős grafikon egy tipikus epizód adataival:                                                                                                                                       
+                                                                                                                                                                                            
+  a) Rúd szög vs. idő: A szög oszcillációja a nulla körül. Tipikusan ±0.05 rad (±3 fok) amplitúdójú lengések láthatók, amelyek csillapodnak az idő előrehaladtával.                         
+                                                                                                                                                                                            
+  b) Szögsebesség vs. idő: A szögsebesség változásai követik a szög deriváltját, tipikusan ±1 rad/s tartományban.                                                                           
+                                                                                                                                                                                            
+  c) Kocsi pozíció vs. idő: Lassú vándorlás és visszatérés a középponthoz. Az integráló tag hatása jól megfigyelhető.                                                                       
+                                                                                                                                                                                            
+  d) Alkalmazott erő vs. idő: A vezérlő kimenete, tipikusan ±5 N tartományban, gyors változásokkal a rúd oszcillációját követve.                                                            
+                                                                                                                                                                                            
+  4. Epizód összehasonlítás                                                                                                                                                                 
+                                                                                                                                                                                            
+  Oszlopdiagram, amely összehasonlítja az egyes epizódok teljesítményét:                                                                                                                    
+  - X tengely: Epizód sorszáma                                                                                                                                                              
+  - Y tengely: Elért lépésszám                                                                                                                                                              
+  - Színkódolás: Zöld (500 lépés), sárga (400-499), piros (<400)                                                                                                                            
+                                                                                                                                                                                            
+  ---                                                                                                                                                                                       
+  6. Összefoglalás                                                                                                                                                                          
+                                                                                                                                                                                            
+  A projekt során sikeresen implementáltunk egy Mamdani-típusú fuzzy logikai irányítási rendszert a klasszikus CartPole egyensúlyozási feladat megoldására. A rendszer négy bemeneti        
+  változót (rúd szög, szögsebesség, kocsi pozíció, kocsi sebesség) használ és folytonos erőkimenetet generál.                                                                               
+                                                                                                                                                                                            
+  Fő eredmények:                                                                                                                                                                            
+                                                                                                                                                                                            
+  1. A fuzzy vezérlő 24 nyelvi szabállyal hatékonyan stabilizálja a rúd-kocsi rendszert. A tesztek során 80%-os sikerességi arányt értünk el a 500 lépéses epizódokban.                     
+  2. Az integráló tag bevezetése jelentősen javította a kocsi centrálását és lehetővé tette a hosszabb futamokat.                                                                           
+  3. A rendszer robusztus a különböző kezdőállapotokkal szemben, és képes felépülni a kis perturbációkból.                                                                                  
+  4. A tagsági függvények és szabályok gondos hangolása kulcsfontosságú volt a jó teljesítmény eléréséhez.                                                                                  
+                                                                                                                                                                                            
+  A fuzzy megközelítés előnyei:                                                                                                                                                             
+                                                                                                                                                                                            
+  - Intuitív szabálymegfogalmazás emberi nyelven                                                                                                                                            
+  - Nincs szükség pontos matematikai modellre                                                                                                                                               
+  - Sima, folytonos vezérlési jel                                                                                                                                                           
+  - Könnyű módosíthatóság és hangolhatóság                                                                                                                                                  
+  - Robusztus működés paraméter-bizonytalanság esetén                                                                                                                                       
+                                                                                                                                                                                            
+  Korlátok és továbbfejlesztési lehetőségek:                                                                                                                                                
+                                                                                                                                                                                            
+  1. A jelenlegi rendszer nem adaptív – a szabályok és tagsági függvények rögzítettek. Adaptív fuzzy rendszer bevezetése javíthatná a teljesítményt változó körülmények között.             
+  2. A szabálybázis manuálisan lett tervezve. Genetikus algoritmusok vagy más optimalizálási módszerek automatizálhatnák ezt a folyamatot.                                                  
+  3. A kocsi sodródása hosszabb időtávon még mindig problémát jelenthet. További szabályok vagy kifinomultabb integráló logika segíthetne.                                                  
+  4. A rendszer nem veszi figyelembe a jövőbeli állapotokat (prediktív vezérlés). Model prediktív fuzzy vezérlő kombinálása javíthatná az anticipatív viselkedést.                          
+                                                                                                                                                                                            
+  A projekt demonstrálta, hogy a fuzzy logika hatékony eszköz nemlineáris rendszerek szabályozására, és különösen alkalmas olyan feladatokra, ahol az emberi intuíció és szakértői tudás    
+  közvetlenül beépíthető a vezérlési stratégiába.                                                                                                                                           
+                                                                                                                                                                                            
+  ---                                                                                                                                                                                       
+  7. Irodalomjegyzék                                                                                                                                                                        
+                                                                                                                                                                                            
+  1. Zadeh, L. A. (1965). "Fuzzy sets." Information and Control, 8(3), 338-353.                                                                                                             
+  2. Mamdani, E. H., & Assilian, S. (1975). "An experiment in linguistic synthesis with a fuzzy logic controller." International Journal of Man-Machine Studies, 7(1), 1-13.                
+  3. Lee, C. C. (1990). "Fuzzy logic in control systems: fuzzy logic controller." IEEE Transactions on Systems, Man, and Cybernetics, 20(2), 404-418.                                       
+  4. Passino, K. M., & Yurkovich, S. (1998). Fuzzy Control. Addison Wesley Longman.                                                                                                         
+  5. Barto, A. G., Sutton, R. S., & Anderson, C. W. (1983). "Neuronlike adaptive elements that can solve difficult learning control problems." IEEE Transactions on Systems, Man, and       
+  Cybernetics, SMC-13(5), 834-846.                                                                                                                                                          
+  6. Florian, R. V. (2007). "Correct equations for the dynamics of the cart-pole system." Center for Cognitive and Neural Studies (Coneural), Romania.                                      
+  7. Jang, J. S. R. (1993). "ANFIS: adaptive-network-based fuzzy inference system." IEEE Transactions on Systems, Man, and Cybernetics, 23(3), 665-685.                                     
+  8. Wang, L. X. (1997). A Course in Fuzzy Systems and Control. Prentice Hall.                                                                                                              
+  9. Brockman, G., et al. (2016). "OpenAI Gym." arXiv preprint arXiv:1606.01540.                                                                                                            
+  10. scikit-fuzzy Development Team. "scikit-fuzzy: Fuzzy Logic Toolbox for Python." GitHub repository.                                                                                     
+                                                                                                                                                                                            
+  ---                                                                                                                                                                                       
+  Dokumentáció vége                                                                                                                                                                         
+                                                                                                                                                                                            
+  ---                                                                                                                                                                                       
+  Ez a dokumentáció körülbelül 10-12 oldal terjedelmű nyomtatásban. Tartalmazza az összes kért témakört: bevezetés, fuzzy rendszerek működése, CartPole szimuláció, univerzumok és          
+  szabálybázis leírása, integráló tag hatása, valamint szimulált kimeneti eredmények táblázatokkal és grafikonok leírásával.                                                                
+                                                                                                                                                                                            
+✻ Sautéed for 3m 43s                                                                                                                                                                        
+                                                                                                                                                                                            
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ mentsd el egy markdown fajlba                                                                                                                                                             
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ? for shortcuts                                                                                                                                                                           
+                                                                                                                                                                                            
+

@@ -1,0 +1,573 @@
+#include <stdio.h>
+#include <math.h>
+
+unsigned long factorial(unsigned long number);
+
+/*
+18-as ÉS 19-es FELADAT NEM BIZTOS HOGY JÓ!
+Nem értem teljesen mire gondol pontosan az alpha szög be vitele allat
+de a számítási része az jó.
+*/
+
+int main()
+{
+    // 1 feladat
+    
+    /*
+    
+    int n = 0;
+    float e = 1.0;
+    unsigned long factorialNumber = 0;
+    
+    scanf("%d", &n);
+    
+    for(int i = 1; i <= n; i ++)           
+    {
+        factorialNumber = factorial(i);
+        
+        e += 1.0/(float)factorialNumber;
+    }
+    
+    printf("%f", e);
+    
+    */
+    
+    // 1 feladat
+     
+    // 2 feladat
+    
+    /*
+    
+    int n = 0;
+    float e = 1.0;
+    unsigned long factorialNumber = 0;
+    float result = 0;
+    
+    scanf("%d", &n);
+    
+    for(int i = 1; i <= n; i ++)            
+    {
+        factorialNumber = factorial(i);
+        
+        e += 1.0/(float)factorialNumber;
+        
+        printf("E szam:");
+        printf("%f", e);
+        
+        if(i % 2 == 0)
+        {
+            result += 1.0/e;   
+        }
+        else
+        {
+            result -= 1.0/e;
+        }
+    } 
+    
+    printf("%f", result);
+    
+    */
+    
+    // 2 feladat
+    
+    // 3 feladat
+    
+    /*
+    
+    float result = 1.0;
+    int n = 0;
+    
+    scanf("%d", &n);
+    
+    for(int i = 2; i <= n; i++)
+    {
+        if(i % 2 == 0)
+        {
+            result -= 1.0 / (float)i;
+        }
+        else
+        {
+            result += 1.0 / (float)i;
+        }
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 3 feladat
+    
+    // 4 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 1.0;
+    int counter = 0;
+    
+    scanf("%d", &n);
+    
+    for(int i = 3; i <= n; i += 2) 
+    {
+        if(counter == 0)
+        {
+            result -= 1.0 / (float)i;
+                
+            counter = 1;
+        }
+        else
+        {
+            result += 1.0 / (float)i;
+                
+            counter = 0;
+        }
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 4 feladat
+    
+    // 5 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 0;
+    long number1 = 0;
+    long number2 = 0;
+    
+    scanf("%d", &n);
+    
+    for(int i = 1; i <= n; i++)
+    {
+        number1 = (4 * i) - 1;
+        number2 = (4 * i) + 1;
+        
+        result += 1.0 / (float)(number1 * number2);
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 5 feladat
+    
+    // 6 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 1.0;
+    int base = 2;
+    int number = 0;
+    
+    scanf("%d", &n);
+    
+    for(int i = 1; i <= n; i++)
+    {
+        number = pow(base, i);
+        result += 1.0 / (float)number;
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 6 feladat
+    
+    // 7 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 1.0;
+    int sing = 0;
+    
+    scanf("%d", &n);
+    
+    for(int i = 2; i <= n; i += 2)
+    {
+        if(sing == 0)
+        {
+            result -= 1.0 / (float)i;
+            
+            sing = 1;
+        }
+        else
+        {
+            result += 1.0 / (float)i;
+            
+            sing = 0;
+        }
+    }
+    
+    printf("%f", result);
+    
+    // 7 feladat
+    
+    */
+    
+    // 8 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 1.0;
+    int sing = 0;
+    int number = 0;
+    int power = 2;
+    
+    scanf("%d", &n);
+    
+    for(int i = 2; i <= n; i ++)
+    {
+        number = pow(i, power);
+        
+        if(i % 2 == 0)
+        {
+            result -= 1.0 / (float)number;
+        }
+        else
+        {
+            result += 1.0 / (float)number;
+        }
+    }
+    
+    printf("%f", result);
+    
+    // 8 feladat
+    
+    */
+    
+    /*
+    
+    // 9 feladat
+    
+    int n = 0;
+    float result = 0;
+    int number = 0;
+    int power = 2;
+    
+    scanf("%d", &n);
+    
+    for(int i = 1; i <= n; i += 2) 
+    {
+        number = pow(i, power);
+        result += 1.0 / (float)number;
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 9 feladat
+    
+    // 10 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 1.0;
+    long number = 0;
+    int power = 4;
+    
+    scanf("%d", &n);
+    
+    for(int i = 2; i <= n; i++) 
+    {
+        number = pow(i, power);
+        result += 1.0 / (float)number;
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 10 feladat
+    
+    // 11 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 1.0;
+    long number = 0;
+    int power = 4;
+    
+    scanf("%d", &n);
+    
+    for(int i = 2; i <= n; i++) 
+    {
+        number = pow(i, power);
+        
+        if(i % 2 == 0)
+        {
+            result -= 1.0 / (float)number;
+        }
+        else
+        {
+            result += 1.0 / (float)number;
+        }
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 11 feladat
+    
+    // 12 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 0;
+    int number = 0;
+    int power = 4;
+    
+    scanf("%d", &n);
+    
+    for(int i = 1; i <= n; i += 2) 
+    {
+        number = pow(i, power);
+        result += 1.0 / (float)number;
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 12 feladat
+    
+    // 13 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 1.0;
+    int power = 2;
+    long number = 0;
+    
+    scanf("%d", &n);
+    
+    for(int i = 2; i <= n; i++)
+    {
+        number = pow(i, power);
+        result += 1.0 / (float)number;
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 13 feladat
+    
+    // 14 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 0;
+    long number = 0;
+    
+    scanf("%d", &n);
+    
+    for(int i = 1; i <= n; i++)
+    {
+        number = i * (i + 1);
+        result += 1.0 / (float)number;
+    }
+    
+    printf("%f", result);
+    
+    // 14 feladat
+    
+    */
+    
+    // 15 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 0;
+    long number1 = 0;
+    long number2 = 0;
+    
+    scanf("%d", &n);
+    
+    for(int i = 1; i <= n; i++)
+    {
+        number1 = 2 * i - 1;
+        number2 = 2 * i + 1;
+        result += 1.0 / (float)(number1 * number2);
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 15 feladat
+    
+    // 17 feladat
+    
+    /*
+    
+    int n = 0;
+    float result = 0;
+    long number1 = 0;
+    long number2 = 0;
+    long number3 = 0;
+    
+    scanf("%d", &n);
+    
+    for(int i = 1; i <= n; i++)
+    {
+        number1 = i + 1;
+        number2 = i + 2;
+        number3 = i * (number1) * (number2);
+        result += 1.0 / (float)number3;
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 17 feladat
+    
+    // 18 feladat
+    
+    /*
+    
+    float alpha = 0;
+    float result = 0;
+    int n = 0;
+    int factorialNumber = 0;
+    int sing = 0;
+    int number = 0;
+    
+    printf("Alpha:");
+    scanf("%f", &alpha);
+    printf("\n");
+    
+    printf("n:");
+    scanf("%d", &n);
+    printf("\n");
+    
+    result = alpha;
+    
+    for(int i = 3; i <= n; i += 2)
+    {
+        factorialNumber = factorial(i);
+        number = pow(alpha, i);
+        
+        if(sing == 0)
+        {
+            result -= (float)(number / factorialNumber);
+            
+            sing = 1;
+        }
+        else
+        {
+            result += (float)(number / factorialNumber);
+            
+            sing = 0;
+        }
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 18 feladat
+    
+    // 19 feladat
+    
+    /*
+    
+    float alpha = 0;
+    float result = 1.0;
+    int n = 0;
+    int factorialNumber = 0;
+    int sing = 0;
+    int number = 0;
+    
+    printf("Alpha:");
+    scanf("%f", &alpha);
+    printf("\n");
+    
+    printf("n:");
+    scanf("%d", &n);
+    printf("\n");
+    
+    for(int i = 2; i <= n; i += 2)
+    {
+        factorialNumber = factorial(i);
+        number = pow(alpha, i);
+        
+        if(sing == 0)
+        {
+            result -= (float)(number / factorialNumber);
+            
+            sing = 1;
+        }
+        else
+        {
+            result += (float)(number / factorialNumber);
+            
+            sing = 0;
+        }
+    }
+    
+    printf("%f", result);
+    
+    // 19 feladat
+    
+    */
+    
+    // 20 feladat
+    
+    /*
+    
+    int x = 0;
+    int n = 0;
+    float result = 1.0;
+    int xNumber = 0;
+    int factorialNumber = 0;
+    
+    printf("X:");
+    scanf("%d", &x);
+    printf("\n");
+    
+    printf("n:");
+    scanf("%d", &n);
+    printf("\n");
+    
+    for(int i = 1; i <= n; i++)
+    {
+        factorialNumber = factorial(i);
+        xNumber = pow(x, i);
+        result += (float)(xNumber / factorialNumber);
+    }
+    
+    printf("%f", result);
+    
+    */
+    
+    // 20 feladat
+    
+    return 0;
+}
+
+unsigned long factorial(unsigned long number) 
+{
+    if(number == 0 || number == 1) 
+    {
+        return 1;
+    }
+    else
+    {
+        return number * factorial(number - 1);
+    }
+}
