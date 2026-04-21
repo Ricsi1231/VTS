@@ -1,12 +1,12 @@
 % This program finds a path between two cities on map of Vojvodina.
-% The search is greedy.
+% The user can choose between greedy search and A* search.
 % The user specifies the start city and the destination city.
-% The limitations of greedy search can be seen if we choose the start city 
+% The limitations of greedy search can be seen if we choose the start city
 % 4 (Sombor) and destination city 14 (Pancevo). In that case the path will
 % be 11 13 12 10. The shortest path would be through 8, 9 and 10.
 % If we change the coordinate of city 13 from (6.8 19) to (6.8 20) the path
 % will never be found. The algorithm will always go between cities 13 and
-% 12.
+% 12. A* search avoids these problems by considering the cost so far.
 
 % Each city has an identifier.
 
@@ -118,22 +118,95 @@ if from_town == to_town
     return
 end
 
-current_distance = dist_matr(from_town,to_town);
-current_city = from_town;
-travel_path=[current_city];
-travel_path_cities=[cities(current_city)];
-while current_distance ~= 0
-    x=find(if_path_matr(current_city,:));
-    y=[];
-    for i=1:numel(x)
-        p=dist_matr(x(i),to_town);
-        y=[y p];
-    end
-    [a b]=min(y);
-    current_city=x(b);
-    current_distance=dist_matr(current_city,to_town);
-    travel_path=[travel_path,current_city];
-    travel_path_cities=[travel_path_cities, cities(current_city)];
-end
+disp(' ')
+disp('Choose search algorithm:')
+disp('1 - Greedy search')
+disp('2 - A* search')
+algorithm=input('Your choice (1 or 2): ');
 
-travel_path
+if algorithm == 1
+    % ==================== GREEDY SEARCH ====================
+    current_distance = dist_matr(from_town,to_town);
+    current_city = from_town;
+    travel_path=[current_city];
+    travel_path_cities=[cities(current_city)];
+    step_counter=0;
+    while (current_distance ~= 0 && step_counter~=20)
+        step_counter=step_counter+1;
+        x=find(if_path_matr(current_city,:));
+        y=[];
+        for i=1:numel(x)
+            p=dist_matr(x(i),to_town);
+            y=[y p];
+        end
+        [a b]=min(y);
+        current_city=x(b);
+        current_distance=dist_matr(current_city,to_town);
+        travel_path=[travel_path,current_city];
+        travel_path_cities=[travel_path_cities, cities(current_city)];
+    end
+
+    % Calculate total distance along the path
+    current_city = from_town;
+    total_distance = 0;
+    for i=1:numel(travel_path)
+        q = dist_matr(current_city,travel_path(i));
+        total_distance = total_distance + q;
+        current_city = travel_path(i);
+    end
+
+    disp(' ')
+    disp('=== Greedy Search Result ===')
+    travel_path
+    travel_path_cities
+    total_distance
+    if step_counter==20
+        disp(' ')
+        disp('I am too greedy to find a solution.')
+        disp(' ')
+    end
+
+else
+    % ==================== A* SEARCH ====================
+    fringe = from_town;
+    dist_so_far = 0;
+    travel_path = [];
+
+    heur = dist_matr(from_town, to_town);
+
+    while 1
+        [u v] = min(heur);
+        temp1 = fringe(v);
+        temp2 = dist_so_far(v);
+
+        travel_path = [travel_path temp1];
+
+        if temp1 == to_town
+            total_distance = dist_so_far(v);
+            break;
+        end
+
+        heur(v) = [];
+        fringe(v) = [];
+        dist_so_far(v) = [];
+
+        [a b] = find(if_path_matr(temp1,:));
+        fringe = [b fringe];
+
+        dist_so_far = [zeros(1,length(b)) dist_so_far];
+        heur = [zeros(1,length(b)) heur];
+        for i=1:length(b)
+            dist_so_far(i) = temp2 + dist_matr(temp1, b(i));
+            heur(i) = dist_so_far(i) + dist_matr(fringe(i), to_town);
+        end
+    end
+
+    % Build city names for the path
+    travel_path_cities = cities(travel_path);
+
+    disp(' ')
+    disp('=== A* Search Result ===')
+    travel_path
+    travel_path_cities
+    total_distance
+end
